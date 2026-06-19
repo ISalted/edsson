@@ -1,14 +1,14 @@
 name: edsson-aqa
 
 on:
+  # Manual only — no run on push. Trigger via the "Run workflow" button
+  # (or later from Testomatio). Add `schedule:`/`push:` here if you want auto-runs.
   workflow_dispatch:
     inputs:
       grep:
         description: "Filter by tag (e.g. @smoke). Empty = run all."
         required: false
         default: ""
-  push:
-    branches: [dev, prod]
 
 # A newer run on the same branch cancels the in-flight one.
 concurrency:
