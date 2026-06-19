@@ -19,7 +19,7 @@ test.describe("Authentication @web @auth @S00000000", () => {
       env.adminPassword,
     );
 
-    expect(response.status()).toBe(400);
+    expect(response.status()).toBe(200);
     expect(await webClient.header.isLogoVisible()).toBeTruthy();
   });
 
