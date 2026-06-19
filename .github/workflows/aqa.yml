@@ -44,6 +44,16 @@ jobs:
       - name: Install Chrome
         run: npx playwright install --with-deps chrome
 
+      - name: Debug — secrets presence & reachability (temporary)
+        run: |
+          echo "BASE_URL  set=$([ -n "$BASE_URL" ] && echo yes || echo no) len=${#BASE_URL}"
+          echo "API_URL   set=$([ -n "$API_URL" ] && echo yes || echo no) len=${#API_URL}"
+          echo "ADMIN_EMAIL    set=$([ -n "$ADMIN_EMAIL" ] && echo yes || echo no)"
+          echo "ADMIN_PASSWORD set=$([ -n "$ADMIN_PASSWORD" ] && echo yes || echo no)"
+          echo "TESTOMATIO     set=$([ -n "$TESTOMATIO" ] && echo yes || echo no)"
+          echo "--- reachability using the actual BASE_URL secret ---"
+          curl -sS -I --max-time 20 "$BASE_URL/login/" | head -1 || echo "curl FAILED"
+
       - name: Run tests
         run: |
           npx playwright test \
