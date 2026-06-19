@@ -17,7 +17,7 @@ test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @loc
     await webClient.userAccountsPage.filterByText("Login", user.login);
   });
 
-  test("UAC-048: locking an Active user sets Status=Inactive and greys the row", async ({
+  test("UAC-048: locking an Active user sets Status=Inactive and greys the row @T425da9e4", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -30,7 +30,7 @@ test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @loc
     expect(await uap.isRowGreyed(user.login)).toBeTruthy();
   });
 
-  test("UAC-049: unlocking a locked user restores Status=Active and normal styling", async ({
+  test("UAC-049: unlocking a locked user restores Status=Active and normal styling @T682bbdad", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -48,7 +48,7 @@ test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @loc
     expect(await uap.isRowGreyed(user.login)).toBeFalsy();
   });
 
-  test("UAC-050: the Lock status change persists after a full page reload", async ({
+  test("UAC-050: the Lock status change persists after a full page reload @T0c60b3a5", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

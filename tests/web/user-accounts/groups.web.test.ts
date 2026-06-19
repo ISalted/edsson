@@ -9,7 +9,7 @@ test.describe("User Accounts — Groups & Projects @web @user-accounts @groups @
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-046: linking a project and Save persists it (visible on reopen)", async ({
+  test("UAC-046: linking a project and Save persists it (visible on reopen) @T226e85ce", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -32,7 +32,7 @@ test.describe("User Accounts — Groups & Projects @web @user-accounts @groups @
     expect(await uap.isProjectLinked(PROJECT)).toBeTruthy();
   });
 
-  test("UAC-047: adding a user to a group persists (visible on reopen)", async ({
+  test("UAC-047: adding a user to a group persists (visible on reopen) @T02e2c6fa", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

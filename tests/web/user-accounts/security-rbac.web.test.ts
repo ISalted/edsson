@@ -6,7 +6,7 @@ test.describe("User Accounts — Stored XSS @web @user-accounts @security @mutat
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-056: markup in Name renders inert in the grid, detail panel and edit popup", async ({
+  test("UAC-056: markup in Name renders inert in the grid, detail panel and edit popup @T2315fb80", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -28,7 +28,7 @@ test.describe("User Accounts — Stored XSS @web @user-accounts @security @mutat
     expect(executed).toBeFalsy();
   });
 
-  test("UAC-057: a stored payload in Details renders as inert literal text", async ({
+  test("UAC-057: a stored payload in Details renders as inert literal text @T456622de", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

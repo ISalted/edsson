@@ -21,7 +21,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     await webClient.userAccountsPage.filterByText("Login", user.login);
   });
 
-  test("UAC-033: unchecking a permission and Save persists the deselection", async ({
+  test("UAC-033: unchecking a permission and Save persists the deselection @T782e14fa", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -35,7 +35,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isPermissionChecked(PERMS[0])).toBeFalsy();
   });
 
-  test("UAC-034: 'Save' persists changes, keeps the popup open, and the grid row updates", async ({
+  test("UAC-034: 'Save' persists changes, keeps the popup open, and the grid row updates @T77b144d6", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -51,7 +51,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.getRowCellText(user.login, "Name")).toBe(newName);
   });
 
-  test("UAC-035: 'Save and Close' persists changes, closes the popup, and the grid updates", async ({
+  test("UAC-035: 'Save and Close' persists changes, closes the popup, and the grid updates @Tef35e68c", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -66,7 +66,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.getRowCellText(user.login, "Name")).toBe(newName);
   });
 
-  test("UAC-036: editing Name and saving updates the grid Name cell", async ({
+  test("UAC-036: editing Name and saving updates the grid Name cell @T57bdafc3", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -80,7 +80,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.getRowCellText(user.login, "Name")).toBe(newName);
   });
 
-  test("UAC-037: re-opening after a Name edit shows the persisted Name (round-trip)", async ({
+  test("UAC-037: re-opening after a Name edit shows the persisted Name (round-trip) @T09c79c3e", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -95,7 +95,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.getFieldValue("Name")).toBe(newName);
   });
 
-  test("UAC-038: toggling External and saving updates the grid boolean column", async ({
+  test("UAC-038: toggling External and saving updates the grid boolean column @T6a06b599", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -108,7 +108,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isGridBooleanChecked(user.login, "External")).toBeTruthy();
   });
 
-  test("UAC-039: changing Status Active->Inactive greys the row and updates the Status cell", async ({
+  test("UAC-039: changing Status Active->Inactive greys the row and updates the Status cell @Teca21993", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -122,7 +122,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isRowGreyed(user.login)).toBeTruthy();
   });
 
-  test("UAC-040: removing a checked permission and saving persists the removal", async ({
+  test("UAC-040: removing a checked permission and saving persists the removal @T87f64717", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -136,7 +136,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isPermissionChecked(PERMS[1])).toBeFalsy();
   });
 
-  test("UAC-041: clearing required Name and Save is blocked", async ({ webClient }) => {
+  test("UAC-041: clearing required Name and Save is blocked @Td16860b1", async ({ webClient }) => {
     const uap = webClient.userAccountsPage;
     await uap.clickEditRow(user.login);
     await uap.setFieldValue("Name", "");
@@ -145,7 +145,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-042: Login is read-only in Edit mode (immutable after creation)", async ({
+  test("UAC-042: Login is read-only in Edit mode (immutable after creation) @T6b4cc9b0", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -154,7 +154,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isFieldEditable("Login")).toBeFalsy();
   });
 
-  test("UAC-043: clearing required E-mail and Save is blocked", async ({ webClient }) => {
+  test("UAC-043: clearing required E-mail and Save is blocked @Tde3160ab", async ({ webClient }) => {
     const uap = webClient.userAccountsPage;
     await uap.clickEditRow(user.login);
     await uap.setFieldValue("E-mail", "");
@@ -170,7 +170,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     async () => {},
   );
 
-  test("UAC-045: editing E-mail to another user's e-mail is rejected (uniqueness)", async ({
+  test("UAC-045: editing E-mail to another user's e-mail is rejected (uniqueness) @Teea6741e", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

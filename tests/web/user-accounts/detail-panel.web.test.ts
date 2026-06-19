@@ -9,7 +9,7 @@ test.describe("User Accounts — Detail Panel @web @user-accounts @detail @S2c3d
     await webClient.userAccountsPage.filterByText("Login", KNOWN_USER);
   });
 
-  test("UAC-007: opening a row shows the detail panel with Permissions active and populated", async ({
+  test("UAC-007: opening a row shows the detail panel with Permissions active and populated @Td03fca17", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.openRowDetail(KNOWN_USER);
@@ -22,7 +22,7 @@ test.describe("User Accounts — Detail Panel @web @user-accounts @detail @S2c3d
     ).toBeGreaterThan(0);
   });
 
-  test("UAC-008: switching rows shows the selected user's own permissions, not stale data", async ({
+  test("UAC-008: switching rows shows the selected user's own permissions, not stale data @T2baa82a0", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -49,7 +49,7 @@ test.describe("User Accounts — Detail Panel @web @user-accounts @detail @S2c3d
     expect(await uap.isDetailPermissionGranted(PERMS[0])).toBeFalsy();
   });
 
-  test("UAC-009: a user with NO permissions shows none granted in the detail Permissions tab", async ({
+  test("UAC-009: a user with NO permissions shows none granted in the detail Permissions tab @Tdf24f9b4", async ({
     webClient,
   }) => {
     // create a throwaway user with zero permissions, then inspect its detail

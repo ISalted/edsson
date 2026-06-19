@@ -1,0 +1,125 @@
+name: edsson-aqa
+
+on:
+  workflow_dispatch:
+    inputs:
+      grep:
+        description: "Filter by tag (e.g. @smoke). Empty = run all."
+        required: false
+        default: ""
+  push:
+    branches: [dev, prod]
+
+# A newer run on the same branch cancels the in-flight one.
+concurrency:
+  group: aqa-${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  SHARD_TOTAL: "3"
+
+jobs:
+  test:
+    name: tests ${{ matrix.shard }}/3
+    runs-on: ubuntu-latest
+    # dev branch -> "dev" environment secrets, prod branch -> "prod" secrets
+    environment: ${{ github.ref_name == 'prod' && 'prod' || 'dev' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    env:
+      # picked up by lib/config -> process.env.* (no .env file in CI)
+      BASE_URL: ${{ secrets.BASE_URL }}
+      API_URL: ${{ secrets.API_URL }}
+      ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      # Testomatio: one shared run across all shards
+      TESTOMATIO: ${{ secrets.TESTOMATIO }}
+      TESTOMATIO_RUN: ${{ github.run_id }}
+      TESTOMATIO_PROCEED: "1"
+      TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] #${{ github.run_number }}"
+      TESTOMATIO_PRIVATE_ARTIFACTS: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chrome
+        run: npx playwright install --with-deps chrome
+
+      - name: Run tests (shard ${{ matrix.shard }}/${{ env.SHARD_TOTAL }})
+        run: |
+          npx playwright test \
+            --project="Parallel Web" \
+            --grep "${{ github.event.inputs.grep }}" \
+            --shard=${{ matrix.shard }}/${{ env.SHARD_TOTAL }} \
+            --retries=2 \
+            --reporter=blob,list
+
+      - name: Upload blob report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-${{ matrix.shard }}
+          path: blob-report/
+          retention-days: 7
+
+  merge-report:
+    name: merge HTML report
+    if: ${{ !cancelled() }}
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Download blob reports
+        uses: actions/download-artifact@v4
+        with:
+          path: all-blobs
+          pattern: blob-*
+          merge-multiple: true
+
+      - name: Merge into one HTML report
+        run: npx playwright merge-reports --reporter=html ./all-blobs
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+          retention-days: 14
+
+  testomatio-finish:
+    name: finalize Testomatio run
+    if: ${{ always() }}
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Close the shared Testomatio run
+        env:
+          TESTOMATIO: ${{ secrets.TESTOMATIO }}
+          TESTOMATIO_RUN: ${{ github.run_id }}
+        run: npx start-test-run --finish || true

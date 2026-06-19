@@ -2,7 +2,6 @@
   "name": "edsson-aqa",
   "version": "1.0.0",
   "scripts": {
-    "setup:auth": "playwright test --project='setup-auth'",
     "test:web": "playwright test --project='Parallel Web'",
     "test": "playwright test",
     "headed": "playwright test --headed",

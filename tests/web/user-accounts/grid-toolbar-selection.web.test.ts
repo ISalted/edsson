@@ -6,19 +6,19 @@ test.describe("User Accounts — Toolbar & Selection State @web @user-accounts @
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-003: Lock is disabled on load when no row is selected", async ({
+  test("UAC-003: Lock is disabled on load when no row is selected @T02f560a6", async ({
     webClient,
   }) => {
     expect(await webClient.userAccountsPage.isLockEnabled()).toBeFalsy();
   });
 
-  test("UAC-004: Unlock is disabled on load when no row is selected", async ({
+  test("UAC-004: Unlock is disabled on load when no row is selected @Tb3770e5e", async ({
     webClient,
   }) => {
     expect(await webClient.userAccountsPage.isUnlockEnabled()).toBeFalsy();
   });
 
-  test("UAC-005: selecting one row enables Lock, Unlock and Delete", async ({
+  test("UAC-005: selecting one row enables Lock, Unlock and Delete @T8a4e373f", async ({
     webClient,
   }) => {
     // KNOWN_USER isn't on page 1 — filter to it so the row is rendered

@@ -5,7 +5,7 @@ test.describe("User Accounts — Filtering @web @user-accounts @filter @S5f6a7b8
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-006: special/SQL/HTML characters in a filter are treated as literal text (no injection, safe no-results)", async ({
+  test("UAC-006: special/SQL/HTML characters in a filter are treated as literal text (no injection, safe no-results) @T67b43e27", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.filterByText("Login", "%_'\"<>&;--");

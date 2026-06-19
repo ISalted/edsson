@@ -5,7 +5,7 @@ test.describe("User Accounts — Accessibility @web @user-accounts @a11y @S7b8c9
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-026: focus is trapped inside the Create/Edit modal", async ({
+  test("UAC-026: focus is trapped inside the Create/Edit modal @T05033fbf", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.clickCreate();
