@@ -16,7 +16,9 @@ concurrency:
 jobs:
   tests:
     name: tests
-    runs-on: [self-hosted, edsson]
+    # target runner-1 only (its unique label) so the box isn't overloaded;
+    # runner-2 stays available for the parallel-sharding demo via the "edsson" label.
+    runs-on: [self-hosted, edsson-1]
     # dev branch -> "dev" environment secrets, prod branch -> "prod" secrets
     environment: ${{ github.ref_name == 'prod' && 'prod' || 'dev' }}
     env:
