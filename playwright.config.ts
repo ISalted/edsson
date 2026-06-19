@@ -1,5 +1,18 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices, type ReporterDescription } from "@playwright/test";
 import "dotenv/config";
+
+const reporters: ReporterDescription[] = [
+  ["list"],
+  ["html", { open: "never" }],
+];
+
+// Report to Testomatio only when the API key is present (CI). Local runs stay quiet.
+if (process.env.TESTOMATIO) {
+  reporters.push([
+    "@testomatio/reporter/lib/adapter/playwright.js",
+    { apiKey: process.env.TESTOMATIO },
+  ]);
+}
 
 export default defineConfig({
   testDir: "./tests",
@@ -13,14 +26,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
-  reporter: [
-    ["list"],
-    ["html", { open: "never" }],
-    // ["./node_modules/@testomatio/reporter/lib/adapter/playwright.js", { apiKey: process.env.TESTOMATIO }],
-  ],
+  reporter: reporters,
   use: {
     baseURL: process.env.BASE_URL,
-    trace: "retain-on-failure",
+    trace: 'retain-on-failure',
     screenshot: "only-on-failure",
     actionTimeout: 30 * 1000,
     channel: "chrome",

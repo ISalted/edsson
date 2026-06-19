@@ -19,8 +19,14 @@ export default class WebClient extends UserAccountsMixin(
   // so callers pass "/administration/user-accounts/" — never a full URL.
   // AppRoute gives autocomplete while `(string & {})` still allows ad-hoc paths.
   @step()
-  async goTo(route: AppRoute | (string & {})) {
-    await this.page.goto(route);
+  async goTo(
+    route: AppRoute | (string & {}),
+    options?: {
+      waitUntil?: "load" | "domcontentloaded" | "networkidle" | "commit";
+      timeout?: number;
+    },
+  ) {
+    await this.page.goto(route, options);
   }
 
   @step()
