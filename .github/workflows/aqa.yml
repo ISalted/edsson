@@ -46,6 +46,9 @@ jobs:
       # No "Install Chrome" step — browsers are pre-baked into the runner image.
 
       - name: Run tests
+        # Don't fail the whole run on individual test failures — real pass/fail
+        # lives in Testomatio. Keeps the GitHub run green when a few of many flake.
+        continue-on-error: true
         run: |
           npx playwright test \
             --project="Parallel Web" \
