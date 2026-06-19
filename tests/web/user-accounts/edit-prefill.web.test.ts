@@ -12,14 +12,14 @@ test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6
     await webClient.userAccountsPage.filterByText("Login", KNOWN_USER);
   });
 
-  test("UAC-020: the pencil link opens the user popup as a modal", async ({
+  test("UAC-020: the pencil link opens the user popup as a modal @T009177f6", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.clickEditRow(KNOWN_USER);
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-021: text fields are pre-filled with the selected user's values", async ({
+  test("UAC-021: text fields are pre-filled with the selected user's values @T67533e3e", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.clickEditRow(KNOWN_USER);
@@ -28,7 +28,7 @@ test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6
     expect((await webClient.userAccountsPage.getFieldValue("E-mail")).length).toBeGreaterThan(0);
   });
 
-  test("UAC-022: dropdowns show the user's saved selection, not the empty placeholder", async ({
+  test("UAC-022: dropdowns show the user's saved selection, not the empty placeholder @Ta604daec", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.clickEditRow(KNOWN_USER);
@@ -37,7 +37,7 @@ test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6
     expect(status).not.toBe("-- none --");
   });
 
-  test("UAC-023: checkboxes reflect the user's saved state (matches grid flags)", async ({
+  test("UAC-023: checkboxes reflect the user's saved state (matches grid flags) @T9804a243", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.clickEditRow(KNOWN_USER);
@@ -47,7 +47,7 @@ test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6
     expect(await webClient.userAccountsPage.isCheckboxChecked("Partner user")).toBeFalsy();
   });
 
-  test("UAC-024: modifying Name then closing discards the change", async ({
+  test("UAC-024: modifying Name then closing discards the change @Tdcedec86", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -65,7 +65,7 @@ test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6
     expect(await uap.getFieldValue("Name")).toBe(original);
   });
 
-  test("UAC-025: the Permissions panel is pre-checked for exactly the user's permissions", async ({
+  test("UAC-025: the Permissions panel is pre-checked for exactly the user's permissions @T43ecc91f", async ({
     webClient,
   }) => {
     // create a throwaway user with a KNOWN single-permission subset, then reopen

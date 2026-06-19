@@ -10,7 +10,7 @@ test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-061: create a user, filter to find it, and verify the submitted values in the row", async ({
+  test("UAC-061: create a user, filter to find it, and verify the submitted values in the row @T94ad76c8", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -24,7 +24,7 @@ test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @
     expect(await uap.getRowCellText(user.login, "Status")).toBe("Active");
   });
 
-  test("UAC-062: create with a permission subset, then the detail Permissions tab matches (create->detail)", async ({
+  test("UAC-062: create with a permission subset, then the detail Permissions tab matches (create->detail) @T2d7cf81c", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -38,7 +38,7 @@ test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @
     expect(await uap.isDetailPermissionGranted(PERMS[0])).toBeTruthy();
   });
 
-  test("UAC-063: create Active, then Lock -> the row greys and reads Inactive in one flow", async ({
+  test("UAC-063: create Active, then Lock -> the row greys and reads Inactive in one flow @T50fca04e", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -56,7 +56,7 @@ test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @
     expect(await uap.isRowGreyed(user.login)).toBeTruthy();
   });
 
-  test("UAC-065: edit to add one and remove one permission -> the detail reflects both", async ({
+  test("UAC-065: edit to add one and remove one permission -> the detail reflects both @Ta507cc36", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

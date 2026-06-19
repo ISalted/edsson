@@ -16,7 +16,6 @@ function loadSession(
 
 const test = baseFixture.extend<{
   webClient: WebClient;
-  authenticatedWebClient: WebClient;
   apiClient: ApiClient;
   helpers: Helpers;
 }>({
@@ -26,20 +25,6 @@ const test = baseFixture.extend<{
 
   helpers: async ({}, use) => {
     await use(new Helpers());
-  },
-
-  authenticatedWebClient: async ({ page }, use) => {
-    const session = loadSession("sessions.json");
-    if (session) {
-      await page.goto(envConfig.baseUrl);
-      await page.evaluate((token) => {
-        localStorage.setItem("lscache-e-LS_AUTH_TOKEN", token ?? "");
-      }, session.authToken);
-      await page.evaluate((sessionId) => {
-        localStorage.setItem("lscache-e-LS_SESSION_ID", sessionId ?? "");
-      }, session.sessionId);
-    }
-    await use(new WebClient(page));
   },
 
   apiClient: async ({ request }, use) => {

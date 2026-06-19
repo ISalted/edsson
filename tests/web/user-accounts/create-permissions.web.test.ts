@@ -7,7 +7,7 @@ test.describe("User Accounts — Create Permissions (popup, no save) @web @user-
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-016: checking one permission checks only that permission", async ({
+  test("UAC-016: checking one permission checks only that permission @Tdc733a87", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.togglePermission("View Resource Costs Report", true);
@@ -19,7 +19,7 @@ test.describe("User Accounts — Create Permissions (popup, no save) @web @user-
     ).toBeFalsy();
   });
 
-  test("UAC-017: header 'select all' checks all permissions across categories", async ({
+  test("UAC-017: header 'select all' checks all permissions across categories @Tf28e0c1c", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.selectAllPermissions();
@@ -31,7 +31,7 @@ test.describe("User Accounts — Create Permissions (popup, no save) @web @user-
     ).toBeTruthy();
   });
 
-  test("UAC-018: header 'select all' toggled twice deselects all permissions", async ({
+  test("UAC-018: header 'select all' toggled twice deselects all permissions @Tea5bc390", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.selectAllPermissions(); // check all
@@ -44,7 +44,7 @@ test.describe("User Accounts — Create Permissions (popup, no save) @web @user-
     ).toBeFalsy();
   });
 
-  test("UAC-019: permission selection persists across popup tab switches", async ({
+  test("UAC-019: permission selection persists across popup tab switches @T41db9bd1", async ({
     webClient,
   }) => {
     // Projects tab is disabled in Create mode, so switch via the enabled Groups tab

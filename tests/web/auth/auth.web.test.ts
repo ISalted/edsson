@@ -2,6 +2,9 @@ import { test, expect } from "@lib/fixtures";
 import { env } from "@lib/config";
 
 test.describe("Authentication @web @auth @S00000000", () => {
+  // Auth/login flow must start unauthenticated — drop the shared session.
+  test.use({ storageState: { cookies: [], origins: [] } });
+
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/login/");
   });

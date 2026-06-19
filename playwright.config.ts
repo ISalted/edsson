@@ -3,6 +3,9 @@ import "dotenv/config";
 
 export default defineConfig({
   testDir: "./tests",
+  // Logs in once before everything and writes session-storage.json. Runs in
+  // both CLI and UI mode regardless of the project filter (no setup project).
+  globalSetup: "./globalSetup.ts",
   // 60s: create-flow tests are slow because creating a user triggers a real
   // welcome-email send on save (dev env). Lower once that is disabled/sinked.
   timeout: 60 * 1000,
@@ -20,44 +23,18 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     actionTimeout: 30 * 1000,
+    channel: "chrome",
+    ...devices["Desktop Chrome"],
+    viewport: { width: 1700, height: 1025 },
+    launchOptions: {
+      args: ["--disable-blink-features=AutomationControlled"],
+    },
   },
   projects: [
     {
-      name: "setup-auth-web",
-      testMatch: /usersSessionWeb\.setup\.ts/,
-      use: {
-        channel: "chrome",
-        ...devices["Desktop Chrome"],
-        viewport: { width: 1700, height: 1025 },
-        launchOptions: {
-          args: ["--disable-blink-features=AutomationControlled"],
-        },
-      },
-    },
-    {
-      name: "Auth Tests",
-      testMatch: ["**/auth/*.web.test.ts"],
-      use: {
-        channel: "chrome",
-        ...devices["Desktop Chrome"],
-        viewport: { width: 1700, height: 1025 },
-        launchOptions: {
-          args: ["--disable-blink-features=AutomationControlled"],
-        },
-      },
-    },
-    {
       name: "Parallel Web",
       testMatch: ["**/*.web.test.ts"],
-      testIgnore: ["**/auth/*.web.test.ts"],
-      dependencies: ["setup-auth-web"],
       use: {
-        channel: "chrome",
-        ...devices["Desktop Chrome"],
-        viewport: { width: 1700, height: 1025 },
-        launchOptions: {
-          args: ["--disable-blink-features=AutomationControlled"],
-        },
         storageState: "session-storage.json",
       },
     },

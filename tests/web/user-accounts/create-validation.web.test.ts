@@ -7,7 +7,7 @@ test.describe("User Accounts — Create Validation @web @user-accounts @create @
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-010: empty Save flags the empty-able required fields and creates no user", async ({
+  test("UAC-010: empty Save flags the empty-able required fields and creates no user @Te724711d", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.save();
@@ -19,7 +19,7 @@ test.describe("User Accounts — Create Validation @web @user-accounts @create @
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-011: 'Save and Close' is blocked the same as Save on an empty form", async ({
+  test("UAC-011: 'Save and Close' is blocked the same as Save on an empty form @Tb42b9db8", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.saveAndClose();
@@ -27,7 +27,7 @@ test.describe("User Accounts — Create Validation @web @user-accounts @create @
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-012: filling only Name still flags Login and E-mail", async ({
+  test("UAC-012: filling only Name still flags Login and E-mail @T78fb2964", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.fillCreateForm({
@@ -41,7 +41,7 @@ test.describe("User Accounts — Create Validation @web @user-accounts @create @
     expect(await webClient.userAccountsPage.isCreatePopupVisible()).toBeTruthy();
   });
 
-  test("UAC-013: an e-mail without '@' is rejected with a format error", async ({
+  test("UAC-013: an e-mail without '@' is rejected with a format error @T6dab3349", async ({
     webClient,
   }) => {
     await webClient.userAccountsPage.fillCreateForm({
@@ -61,13 +61,13 @@ test.describe("User Accounts — Create Validation @web @user-accounts @create @
   // Status/Language are required (*) but carry valid, non-clearable defaults, so
   // they can never be left empty — these verify the defaults instead of an
   // (impossible) empty-submit. Read-only: no Save, no user created.
-  test("UAC-014: Status defaults to a valid 'Active' value (required, not clearable)", async ({
+  test("UAC-014: Status defaults to a valid 'Active' value (required, not clearable) @Tb0a89926", async ({
     webClient,
   }) => {
     expect(await webClient.userAccountsPage.getSelectboxValue("Status")).toBe("Active");
   });
 
-  test("UAC-015: Language defaults to a valid 'Default' value (required, not clearable)", async ({
+  test("UAC-015: Language defaults to a valid 'Default' value (required, not clearable) @T54f56013", async ({
     webClient,
   }) => {
     expect(await webClient.userAccountsPage.getSelectboxValue("Language")).toBe("Default");

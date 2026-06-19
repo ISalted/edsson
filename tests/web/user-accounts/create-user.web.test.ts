@@ -17,7 +17,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-027: an existing Login is rejected and no user is created", async ({
+  test("UAC-027: an existing Login is rejected and no user is created @T4c50067e", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -31,7 +31,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     expect(await uap.isNoDataVisible()).toBeTruthy(); // unique e-mail never created
   });
 
-  test("UAC-028: an existing E-mail is rejected and no user is created", async ({
+  test("UAC-028: an existing E-mail is rejected and no user is created @T6994d17a", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -45,7 +45,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     expect(await uap.isNoDataVisible()).toBeTruthy();
   });
 
-  test("UAC-029: an XSS payload in Name is stored/escaped safely (no script executes)", async ({
+  test("UAC-029: an XSS payload in Name is stored/escaped safely (no script executes) @Tcfa79622", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -68,7 +68,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     expect(xssExecuted).toBeFalsy();
   });
 
-  test("UAC-030: a rapid double Save creates only ONE user", async ({ webClient }) => {
+  test("UAC-030: a rapid double Save creates only ONE user @Td9c6a49a", async ({ webClient }) => {
     const uap = webClient.userAccountsPage;
     const { name, login, email } = aqaUser("dbl");
     await uap.clickCreate();
@@ -83,7 +83,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     expect(await uap.getRowCount()).toBe(1);
   });
 
-  test("UAC-031: a created user's permissions persist (reopen via pencil)", async ({
+  test("UAC-031: a created user's permissions persist (reopen via pencil) @T68a5572d", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
@@ -101,7 +101,7 @@ test.describe("User Accounts — Create User @web @user-accounts @create @mutati
     expect(await uap.isPermissionChecked(PERMS[1])).toBeTruthy();
   });
 
-  test("UAC-032: a created user's master-detail Permissions tab reflects the granted permission", async ({
+  test("UAC-032: a created user's master-detail Permissions tab reflects the granted permission @Taf88abf1", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;
