@@ -1,0 +1,19 @@
+{
+  "name": "edsson-aqa",
+  "version": "1.0.0",
+  "scripts": {
+    "setup:auth": "playwright test --project='setup-auth'",
+    "test:web": "playwright test --project='Parallel Web'",
+    "test": "playwright test",
+    "headed": "playwright test --headed",
+    "ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.4.0",
+    "tree-node-cli": "^3.0.0",
+    "typescript": "^5.6.0"
+  }
+}
