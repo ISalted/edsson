@@ -29,7 +29,7 @@ export default defineConfig({
   reporter: reporters,
   use: {
     baseURL: process.env.BASE_URL,
-    trace: "retain-on-failure",
+    trace: 'retain-on-failure',
     screenshot: "only-on-failure",
     actionTimeout: 30 * 1000,
     channel: "chrome",
