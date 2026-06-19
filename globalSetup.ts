@@ -24,10 +24,16 @@ export default async function globalSetup() {
   const page = await context.newPage();
   const webClient = new WebClient(page);
 
-  await webClient.goTo("/login/");
+  // Cold-start safe: the dev Azure app may be asleep (20-40s to wake on first
+  // hit). Wait for the DOM (not the full "load" event) and allow up to 90s so
+  // the first navigation doesn't time out while the server spins up.
+  await webClient.goTo("/login/", {
+    waitUntil: "domcontentloaded",
+    timeout: 90_000,
+  });
   await webClient.loginPage.login(env.adminEmail, env.adminPassword);
   await page.waitForURL("**/administration/user-accounts/**", {
-    timeout: 30_000,
+    timeout: 60_000,
   });
 
   const authToken = await page.evaluate(() =>
