@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "<GITHUB_TOKEN>" }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "testomatio-edsson": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@testomatio/mcp@latest",
+        "--token",
+        "<TESTOMATIO_TOKEN>",
+        "--project",
+        "<TESTOMATIO_PROJECT_ID>"
+      ],
+      "env": { "TESTOMATIO_BASE_URL": "https://app.testomat.io" }
+    }
+  }
+}

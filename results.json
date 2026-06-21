@@ -1,0 +1,2257 @@
+{
+  "config": {
+    "argv": [
+      "/Users/brudni/.nvm/versions/node/v22.22.0/bin/node",
+      "/Users/brudni/edsson/node_modules/.bin/playwright",
+      "test",
+      "--list"
+    ],
+    "configFile": "/Users/brudni/edsson/playwright.config.ts",
+    "rootDir": "/Users/brudni/edsson/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/brudni/edsson/globalSetup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/brudni/edsson/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {},
+        "id": "Parallel Web",
+        "name": "Parallel Web",
+        "testDir": "/Users/brudni/edsson/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.web.test.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "web/auth/auth.web.test.ts",
+      "file": "web/auth/auth.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication @web @auth @S00000000",
+          "file": "web/auth/auth.web.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1. Login: valid credentials redirect to user-accounts @T00000001",
+              "ok": true,
+              "tags": [
+                "web",
+                "auth",
+                "S00000000",
+                "T00000001"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "97e364ff9cde959dda2f-f94a007e73a62e6fe37f",
+              "file": "web/auth/auth.web.test.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "2. Login: empty email shows validation error @T00000002",
+              "ok": true,
+              "tags": [
+                "web",
+                "auth",
+                "S00000000",
+                "T00000002"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "97e364ff9cde959dda2f-bd5198acdd15c26acbc2",
+              "file": "web/auth/auth.web.test.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "3. Login: empty password shows validation error @T00000003",
+              "ok": true,
+              "tags": [
+                "web",
+                "auth",
+                "S00000000",
+                "T00000003"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "97e364ff9cde959dda2f-b720ff5b336daa1e25ab",
+              "file": "web/auth/auth.web.test.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "4. Login: invalid credentials return 400 error @T00000004",
+              "ok": true,
+              "tags": [
+                "web",
+                "auth",
+                "S00000000",
+                "T00000004"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "97e364ff9cde959dda2f-004c5a35ebc9dd6b1b23",
+              "file": "web/auth/auth.web.test.ts",
+              "line": 41,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/accessibility.web.test.ts",
+      "file": "web/user-accounts/accessibility.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Accessibility @web @user-accounts @a11y @S7b8c9d0e",
+          "file": "web/user-accounts/accessibility.web.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-026: focus is trapped inside the Create/Edit modal @T05033fbf",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "a11y",
+                "S7b8c9d0e",
+                "T05033fbf"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ce7af32d39f6ea24d037-126098e16b64932575a5",
+              "file": "web/user-accounts/accessibility.web.test.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/create-permissions.web.test.ts",
+      "file": "web/user-accounts/create-permissions.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Create Permissions (popup, no save) @web @user-accounts @create @permissions @S6a7b8c9d",
+          "file": "web/user-accounts/create-permissions.web.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-016: checking one permission checks only that permission @Tdc733a87",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "permissions",
+                "S6a7b8c9d",
+                "Tdc733a87"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "035fd8b104e4b2f16d95-afdc65839ec53cd8191e",
+              "file": "web/user-accounts/create-permissions.web.test.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "UAC-017: header 'select all' checks all permissions across categories @Tf28e0c1c",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "permissions",
+                "S6a7b8c9d",
+                "Tf28e0c1c"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "035fd8b104e4b2f16d95-fb53fe4d22e6b062aaa6",
+              "file": "web/user-accounts/create-permissions.web.test.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "UAC-018: header 'select all' toggled twice deselects all permissions @Tea5bc390",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "permissions",
+                "S6a7b8c9d",
+                "Tea5bc390"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "035fd8b104e4b2f16d95-80ff183eb91fc02792d0",
+              "file": "web/user-accounts/create-permissions.web.test.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "UAC-019: permission selection persists across popup tab switches @T41db9bd1",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "permissions",
+                "S6a7b8c9d",
+                "T41db9bd1"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "035fd8b104e4b2f16d95-e27e3db9c3e29207be5f",
+              "file": "web/user-accounts/create-permissions.web.test.ts",
+              "line": 47,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/create-user.web.test.ts",
+      "file": "web/user-accounts/create-user.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Create User @web @user-accounts @create @mutating @S9d0e1f2a",
+          "file": "web/user-accounts/create-user.web.test.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-027: an existing Login is rejected and no user is created @T4c50067e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "T4c50067e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-8a587af24eca5793d320",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "UAC-028: an existing E-mail is rejected and no user is created @T6994d17a",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "T6994d17a"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-b16fe2bcf5833d3f6c5f",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "UAC-029: an XSS payload in Name is stored/escaped safely (no script executes) @Tcfa79622",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "Tcfa79622"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-d8d85dde78af02d11fc3",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 48,
+              "column": 7
+            },
+            {
+              "title": "UAC-030: a rapid double Save creates only ONE user @Td9c6a49a",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "Td9c6a49a"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-ae38d1460dad0afee0ab",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 71,
+              "column": 7
+            },
+            {
+              "title": "UAC-031: a created user's permissions persist (reopen via pencil) @T68a5572d",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "T68a5572d"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-6c5ab51d0ac9acb1b02a",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 86,
+              "column": 7
+            },
+            {
+              "title": "UAC-032: a created user's master-detail Permissions tab reflects the granted permission @Taf88abf1",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "mutating",
+                "S9d0e1f2a",
+                "Taf88abf1"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "65578dec044fa7ef59db-dc132e35495a41544585",
+              "file": "web/user-accounts/create-user.web.test.ts",
+              "line": 104,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/create-validation.web.test.ts",
+      "file": "web/user-accounts/create-validation.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Create Validation @web @user-accounts @create @validation @S3d4e5f6a",
+          "file": "web/user-accounts/create-validation.web.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-010: empty Save flags the empty-able required fields and creates no user @Te724711d",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "Te724711d"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-7b863ed7aacef512eb2a",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "UAC-011: 'Save and Close' is blocked the same as Save on an empty form @Tb42b9db8",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "Tb42b9db8"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-50104c1c57da8f47b557",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "UAC-012: filling only Name still flags Login and E-mail @T78fb2964",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "T78fb2964"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-9562d5b09416424787c1",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "UAC-013: an e-mail without '@' is rejected with a format error @T6dab3349",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "'",
+                "T6dab3349"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-09f3dfe09fa8c9fce295",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "UAC-014: Status defaults to a valid 'Active' value (required, not clearable) @Tb0a89926",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "Tb0a89926"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-03f2f049935eb948a7e5",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 64,
+              "column": 7
+            },
+            {
+              "title": "UAC-015: Language defaults to a valid 'Default' value (required, not clearable) @T54f56013",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "create",
+                "validation",
+                "S3d4e5f6a",
+                "T54f56013"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "09ca706624a5406f3fe6-e264f4ecdbd97348cd8d",
+              "file": "web/user-accounts/create-validation.web.test.ts",
+              "line": 70,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/detail-panel.web.test.ts",
+      "file": "web/user-accounts/detail-panel.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Detail Panel @web @user-accounts @detail @S2c3d4e5f",
+          "file": "web/user-accounts/detail-panel.web.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-007: opening a row shows the detail panel with Permissions active and populated @Td03fca17",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "detail",
+                "S2c3d4e5f",
+                "Td03fca17"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "05f570b278a174a09587-a7f4f5d695c9293919ae",
+              "file": "web/user-accounts/detail-panel.web.test.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "UAC-008: switching rows shows the selected user's own permissions, not stale data @T2baa82a0",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "detail",
+                "S2c3d4e5f",
+                "T2baa82a0"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "05f570b278a174a09587-a991b6b6249dd4943c1f",
+              "file": "web/user-accounts/detail-panel.web.test.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "UAC-009: a user with NO permissions shows none granted in the detail Permissions tab @Tdf24f9b4",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "detail",
+                "S2c3d4e5f",
+                "Tdf24f9b4"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "05f570b278a174a09587-8614e5e46458482097ac",
+              "file": "web/user-accounts/detail-panel.web.test.ts",
+              "line": 52,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/e2e.web.test.ts",
+      "file": "web/user-accounts/e2e.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — End-to-End @web @user-accounts @e2e @mutating @S4c5d6e7f",
+          "file": "web/user-accounts/e2e.web.test.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-061: create a user, filter to find it, and verify the submitted values in the row @T94ad76c8",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "e2e",
+                "mutating",
+                "S4c5d6e7f",
+                "T94ad76c8"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2f4e45e7851dfcee0512-88076e352bb51a8d3a5e",
+              "file": "web/user-accounts/e2e.web.test.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "UAC-062: create with a permission subset, then the detail Permissions tab matches (create->detail) @T2d7cf81c",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "e2e",
+                "mutating",
+                "S4c5d6e7f",
+                "T2d7cf81c"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2f4e45e7851dfcee0512-5f8d5b7f97b7030a8531",
+              "file": "web/user-accounts/e2e.web.test.ts",
+              "line": 27,
+              "column": 7
+            },
+            {
+              "title": "UAC-063: create Active, then Lock -> the row greys and reads Inactive in one flow @T50fca04e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "e2e",
+                "mutating",
+                "S4c5d6e7f",
+                "T50fca04e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2f4e45e7851dfcee0512-9bad47efe9f58784be6d",
+              "file": "web/user-accounts/e2e.web.test.ts",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "UAC-065: edit to add one and remove one permission -> the detail reflects both @Ta507cc36",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "e2e",
+                "mutating",
+                "S4c5d6e7f",
+                "Ta507cc36"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2f4e45e7851dfcee0512-6a147973c944305c464a",
+              "file": "web/user-accounts/e2e.web.test.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "UAC-064: filter to Active, Select all, Lock -> only the filtered rows are affected",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "e2e",
+                "mutating",
+                "S4c5d6e7f"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/e2e.web.test.ts",
+                        "line": 82,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2f4e45e7851dfcee0512-53d4eeb0ce6d4bb7ac60",
+              "file": "web/user-accounts/e2e.web.test.ts",
+              "line": 82,
+              "column": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/edit-prefill.web.test.ts",
+      "file": "web/user-accounts/edit-prefill.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6a7b",
+          "file": "web/user-accounts/edit-prefill.web.test.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-020: the pencil link opens the user popup as a modal @T009177f6",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "T009177f6"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-95ebd42eb0a06c7d43ce",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 15,
+              "column": 7
+            },
+            {
+              "title": "UAC-021: text fields are pre-filled with the selected user's values @T67533e3e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "T67533e3e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-4820a30030d02dbff66c",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "UAC-022: dropdowns show the user's saved selection, not the empty placeholder @Ta604daec",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "Ta604daec"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-debf0bb0d9a4bdd42eb4",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "UAC-023: checkboxes reflect the user's saved state (matches grid flags) @T9804a243",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "T9804a243"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-d6b09922c4f8c4d3541d",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "UAC-024: modifying Name then closing discards the change @Tdcedec86",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "Tdcedec86"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-6755bed382810ca03ff9",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "UAC-025: the Permissions panel is pre-checked for exactly the user's permissions @T43ecc91f",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "S4e5f6a7b",
+                "T43ecc91f"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "20c01a5bbc758f708545-fd6116d69f5ff4e2214f",
+              "file": "web/user-accounts/edit-prefill.web.test.ts",
+              "line": 68,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/edit-user.web.test.ts",
+      "file": "web/user-accounts/edit-user.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Edit User @web @user-accounts @edit @mutating @S0e1f2a3b",
+          "file": "web/user-accounts/edit-user.web.test.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-033: unchecking a permission and Save persists the deselection @T782e14fa",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T782e14fa"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-adc88b0de7f82e2cd190",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "UAC-034: 'Save' persists changes, keeps the popup open, and the grid row updates @T77b144d6",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T77b144d6"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-22ba778fa66775055a19",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "UAC-035: 'Save and Close' persists changes, closes the popup, and the grid updates @Tef35e68c",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "Tef35e68c"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-88a96ed30b352198803b",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "UAC-036: editing Name and saving updates the grid Name cell @T57bdafc3",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T57bdafc3"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-85ea6936ef3b4826608e",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 69,
+              "column": 7
+            },
+            {
+              "title": "UAC-037: re-opening after a Name edit shows the persisted Name (round-trip) @T09c79c3e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T09c79c3e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-96348e460254de32ffd5",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "UAC-038: toggling External and saving updates the grid boolean column @T6a06b599",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T6a06b599"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-ca87eb8f0de55d8806b5",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 98,
+              "column": 7
+            },
+            {
+              "title": "UAC-039: changing Status Active->Inactive greys the row and updates the Status cell @Teca21993",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "Teca21993"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-1eae7cee237492765fd4",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "UAC-040: removing a checked permission and saving persists the removal @T87f64717",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T87f64717"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-97d14252b5e6351e054c",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 125,
+              "column": 7
+            },
+            {
+              "title": "UAC-041: clearing required Name and Save is blocked @Td16860b1",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "Td16860b1"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-72af1589dc84096887ef",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 139,
+              "column": 7
+            },
+            {
+              "title": "UAC-042: Login is read-only in Edit mode (immutable after creation) @T6b4cc9b0",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "T6b4cc9b0"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-defd4616dd8cae249354",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 148,
+              "column": 7
+            },
+            {
+              "title": "UAC-043: clearing required E-mail and Save is blocked @Tde3160ab",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "Tde3160ab"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-f7ab93bd468cffbfbd37",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 157,
+              "column": 7
+            },
+            {
+              "title": "UAC-044: editing Login to another user's login is rejected (uniqueness)",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/edit-user.web.test.ts",
+                        "line": 168,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-e73a18c792fe2c620b8e",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 168,
+              "column": 8
+            },
+            {
+              "title": "UAC-045: editing E-mail to another user's e-mail is rejected (uniqueness) @Teea6741e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "edit",
+                "mutating",
+                "S0e1f2a3b",
+                "Teea6741e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fcfc0c61729af58e4cad-ee5d59fc38e80de2e5ca",
+              "file": "web/user-accounts/edit-user.web.test.ts",
+              "line": 173,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/filtering.web.test.ts",
+      "file": "web/user-accounts/filtering.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Filtering @web @user-accounts @filter @S5f6a7b8c",
+          "file": "web/user-accounts/filtering.web.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-006: special/SQL/HTML characters in a filter are treated as literal text (no injection, safe no-results) @T67b43e27",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "filter",
+                "S5f6a7b8c",
+                "T67b43e27"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff8b77068b72f07f3ba1-26bc6591f81bd85a70b2",
+              "file": "web/user-accounts/filtering.web.test.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+      "file": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Toolbar & Selection State @web @user-accounts @selection @S1b2c3d4e",
+          "file": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-003: Lock is disabled on load when no row is selected @T02f560a6",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "selection",
+                "S1b2c3d4e",
+                "T02f560a6"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "40972e02935ca911083c-e0f79867dc2392dc0d32",
+              "file": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "UAC-004: Unlock is disabled on load when no row is selected @Tb3770e5e",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "selection",
+                "S1b2c3d4e",
+                "Tb3770e5e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "40972e02935ca911083c-95957963fbeb27b96268",
+              "file": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+              "line": 15,
+              "column": 7
+            },
+            {
+              "title": "UAC-005: selecting one row enables Lock, Unlock and Delete @T8a4e373f",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "selection",
+                "S1b2c3d4e",
+                "T8a4e373f"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "40972e02935ca911083c-c44163b93bd7ecae8f53",
+              "file": "web/user-accounts/grid-toolbar-selection.web.test.ts",
+              "line": 21,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/groups.web.test.ts",
+      "file": "web/user-accounts/groups.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Groups & Projects @web @user-accounts @groups @projects @mutating @S1f2a3b4c",
+          "file": "web/user-accounts/groups.web.test.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-046: linking a project and Save persists it (visible on reopen) @T226e85ce",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "groups",
+                "projects",
+                "mutating",
+                "S1f2a3b4c",
+                "T226e85ce"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8e20c69efeb8f0d7500e-8bd538f1e365af5385c1",
+              "file": "web/user-accounts/groups.web.test.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "UAC-047: adding a user to a group persists (visible on reopen) @T02e2c6fa",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "groups",
+                "projects",
+                "mutating",
+                "S1f2a3b4c",
+                "T02e2c6fa"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8e20c69efeb8f0d7500e-0b1e583c8e86eceda354",
+              "file": "web/user-accounts/groups.web.test.ts",
+              "line": 35,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/lock-unlock.web.test.ts",
+      "file": "web/user-accounts/lock-unlock.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Lock / Unlock & Status @web @user-accounts @lock @mutating @S2a3b4c5d",
+          "file": "web/user-accounts/lock-unlock.web.test.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-048: locking an Active user sets Status=Inactive and greys the row @T425da9e4",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d",
+                "T425da9e4"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-73de760f2fb2b56d463a",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "UAC-049: unlocking a locked user restores Status=Active and normal styling @T682bbdad",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d",
+                "T682bbdad"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-a71bd1cb0d901a9adf23",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 33,
+              "column": 7
+            },
+            {
+              "title": "UAC-050: the Lock status change persists after a full page reload @T0c60b3a5",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d",
+                "T0c60b3a5"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-2e731bfe3b9ac104a449",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "UAC-051: a locked user can no longer authenticate / is denied access",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/lock-unlock.web.test.ts",
+                        "line": 70,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-3f4233189943149a17d7",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 70,
+              "column": 8
+            },
+            {
+              "title": "UAC-052: an unlocked user can authenticate again and regains access",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/lock-unlock.web.test.ts",
+                        "line": 74,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-20d0bb56851abe9eaed0",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 74,
+              "column": 8
+            },
+            {
+              "title": "UAC-053: after Lock the Unlock-activities-date invariant holds (not in the past)",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "lock",
+                "mutating",
+                "S2a3b4c5d"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/lock-unlock.web.test.ts",
+                        "line": 81,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "960d7dd08bddec4e2950-f8866283459aa35a8fb5",
+              "file": "web/user-accounts/lock-unlock.web.test.ts",
+              "line": 81,
+              "column": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/page-load.web.test.ts",
+      "file": "web/user-accounts/page-load.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Page Load @web @user-accounts @smoke @Sad3f1e2b",
+          "file": "web/user-accounts/page-load.web.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-001: page loads with the grid populated and the pager visible @T4e44a5e7",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "smoke",
+                "Sad3f1e2b",
+                "T4e44a5e7"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "089da0df87f0ad056ff7-413ab78ea72ca905d1ec",
+              "file": "web/user-accounts/page-load.web.test.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "UAC-002: deep-linking while unauthenticated redirects to login and exposes no data @T5af6ffd2",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "smoke",
+                "Sad3f1e2b",
+                "T5af6ffd2"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "089da0df87f0ad056ff7-cee19a72b577380169c1",
+              "file": "web/user-accounts/page-load.web.test.ts",
+              "line": 13,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "web/user-accounts/security-rbac.web.test.ts",
+      "file": "web/user-accounts/security-rbac.web.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "User Accounts — Stored XSS @web @user-accounts @security @mutating @S3b4c5d6e",
+          "file": "web/user-accounts/security-rbac.web.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UAC-056: markup in Name renders inert in the grid, detail panel and edit popup @T2315fb80",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e",
+                "T2315fb80"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-b82304e5c98894550196",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "UAC-057: a stored payload in Details renders as inert literal text @T456622de",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e",
+                "T456622de"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-0857fc39eff2896ddd03",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "UAC-054: a non-admin navigating directly to the page is denied (no user list)",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/security-rbac.web.test.ts",
+                        "line": 51,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-9069188e0dffc545bf9e",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 51,
+              "column": 10
+            },
+            {
+              "title": "UAC-055: a non-admin Lock/Unlock/Save/permission request is rejected server-side",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/security-rbac.web.test.ts",
+                        "line": 52,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-a57dd7eeba53b0fab55a",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 52,
+              "column": 10
+            },
+            {
+              "title": "UAC-058: tampering the edit request's user-id (IDOR) is rejected server-side",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/security-rbac.web.test.ts",
+                        "line": 53,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-67607e4113e3fb97b6df",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 53,
+              "column": 10
+            },
+            {
+              "title": "UAC-059: a lower-privileged operator cannot grant Administrator (rejected server-side)",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/security-rbac.web.test.ts",
+                        "line": 54,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-4dd6e3cf7fa8aa0e5f8e",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 54,
+              "column": 10
+            },
+            {
+              "title": "UAC-060: granting a permission the operator does not hold is rejected server-side",
+              "ok": true,
+              "tags": [
+                "web",
+                "user-accounts",
+                "security",
+                "mutating",
+                "S3b4c5d6e"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fixme",
+                      "location": {
+                        "file": "/Users/brudni/edsson/tests/web/user-accounts/security-rbac.web.test.ts",
+                        "line": 55,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Parallel Web",
+                  "projectName": "Parallel Web",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e5b5dadf47577e632b11-3d109ea6993b2bee4288",
+              "file": "web/user-accounts/security-rbac.web.test.ts",
+              "line": 55,
+              "column": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-06-20T00:30:07.685Z",
+    "duration": 162.767,
+    "expected": 0,
+    "skipped": 69,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,9 +1,13 @@
 node_modules/
 playwright-report/
 test-results/
+.playwright-mcp/
 sessions.json
 session-storage.json
 .env
 .env.*
 !.env.example
+# .mcp.json holds the Testomatio token — keep it local; share .mcp.json.example
+.mcp.json
+!.mcp.json.example
 .DS_Store

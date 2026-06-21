@@ -4,6 +4,9 @@ import "dotenv/config";
 const reporters: ReporterDescription[] = [
   ["list"],
   ["html", { open: "never" }],
+  // Machine-readable per-test results, consumed by the AQA Copilot left panel
+  // (a Playwright-UI-like tree wired to GitHub). Uploaded as its own artifact.
+  ["json", { outputFile: "results.json" }],
 ];
 
 // Report to Testomatio only when the API key is present (CI). Local runs stay quiet.
@@ -24,7 +27,7 @@ export default defineConfig({
   timeout: 60 * 1000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
+  retries: process.env.CI ? 1 : 1,
   workers: process.env.CI ? 1 : 1,
   reporter: reporters,
   use: {
