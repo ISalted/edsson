@@ -1,6 +1,6 @@
 import { test, expect } from "@lib/fixtures";
 
-test.describe("User Accounts — Create Validation @web @user-accounts @create @validation @S3d4e5f6a", () => {
+test.describe("User Accounts — Create Validation @web @user-accounts @create @validation @regression @S3d4e5f6a", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
     await webClient.userAccountsPage.clickCreate();

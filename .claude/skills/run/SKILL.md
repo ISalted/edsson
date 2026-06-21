@@ -56,8 +56,8 @@ Give the run **URL** + what launched (**filter + ref**). State the truth plainly
 - **`--retries=2` can mask flakiness** — a test that fails then passes on retry shows green.
 - Artifacts (`if: always()`, 14-day retention): `playwright-html-report`, `playwright-json-report`
   (`results.json`).
-- When it finishes → hand off to **`/analyze-report`** to triage; a single failing test's code →
-  `/analyze-test`.
+- When it finishes → **offer** (via `AskUserQuestion`, CLAUDE.md Interaction model, don't auto-proceed):
+  *[▶ triage with `/analyze-report`] [▶ dig into a failing test with `/analyze-test`] [⏸ stop]*.
 
 ## Guardrails
 - Runs go to the **runner only** — never run mutating/destructive flows locally.

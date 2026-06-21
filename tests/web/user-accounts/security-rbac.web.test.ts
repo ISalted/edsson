@@ -1,7 +1,7 @@
 import { test, expect } from "@lib/fixtures";
 import { aqaUser } from "@data/user-accounts/user-account.data";
 
-test.describe("User Accounts — Stored XSS @web @user-accounts @security @mutating @S3b4c5d6e", () => {
+test.describe("User Accounts — Stored XSS @web @user-accounts @security @mutating @regression @S3b4c5d6e", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });

@@ -4,7 +4,7 @@ import { aqaUser } from "@data/user-accounts/user-account.data";
 const GROUP = "TestGroup"; // a stable group present on the dev grid
 const PROJECT = "Accells"; // a stable existing project on the dev grid
 
-test.describe("User Accounts — Groups & Projects @web @user-accounts @groups @projects @mutating @S1f2a3b4c", () => {
+test.describe("User Accounts — Groups & Projects @web @user-accounts @groups @projects @mutating @regression @S1f2a3b4c", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });

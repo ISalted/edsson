@@ -1,18 +1,21 @@
 ---
 name: test-design
-description: Design a prioritized, deduplicated test-case CHECKLIST for a feature, page, or requirement BEFORE any automation — systematically applies the full test-design technique grid (equivalence partitioning, boundary values, decision tables, state transition, pairwise, plus security, accessibility, persistence, i18n) and outputs a checklist of concrete, ID'd cases in the project's format. Use when asked to create test cases, a checklist, test scenarios, coverage, or to "break down" / decompose a feature or requirement into cases. This is the step AFTER /analyze-requirements (it consumes the `<AREA>_REQUIREMENTS.md` artifact) and BEFORE /test-write.
+description: Design a prioritized, deduplicated test-case CHECKLIST for a feature, page, or requirement BEFORE any automation — systematically applies the full test-design technique grid (equivalence partitioning, boundary values, decision tables, state transition, pairwise, plus security, accessibility, persistence, i18n) and outputs a checklist of concrete, ID'd cases in the project's format. Use when asked to create test cases, a checklist, test scenarios, coverage, or to "break down" / decompose a feature or requirement into cases. This is the step AFTER /analyze-requirements (it consumes the `test-design/<area>/REQUIREMENTS.md` artifact) and BEFORE /test-write.
 ---
 
 # Design a test-case checklist
 
-The **design** phase of the QA pipeline: a requirement — ideally the `<AREA>_REQUIREMENTS.md`
-from `/analyze-requirements`, or a feature / page directly — becomes a prioritized,
+The **design** phase of the QA pipeline: a requirement — ideally the `REQUIREMENTS.md`
+(at `test-design/<area>/REQUIREMENTS.md`, written by `/analyze-requirements`), or a feature / page
+directly — becomes a prioritized,
 **deduplicated** checklist of cases. Fed a requirements artifact, **trace each case to its
 `REQ-<AREA>-NNN`** so coverage maps back to a need. Each case is concrete enough that
 `/test-write` can later automate it as **exactly one** test. You apply test-design theory
 deliberately — not improvise — and the bar is ISTQB-grade: **minimal but sufficient**.
 
-Output is a single markdown file `<AREA>_CHECKLIST.md`. This skill is self-contained:
+Output is a single markdown file at **`test-design/<area>/CHECKLIST.md`** — the project's home for
+design artifacts, one folder per area mirroring `tests/web/<area>/` (`auth`, `user-accounts`, …); never
+the repo root and never `lib/`. This skill is self-contained:
 the format, ID scheme, priority legend, technique grid, and process are all below. The
 project `CLAUDE.md` guardrails always apply.
 
@@ -62,7 +65,7 @@ number**, e.g. `GRP-001`, `UAC-014`, `LCK-007`.
 - These ids flow straight into `/test-write` as the test title prefix, so they must be
   stable and unique.
 
-## Output format — `<AREA>_CHECKLIST.md` (exact)
+## Output format — `CHECKLIST.md` (exact)
 
 Write the file with this structure, nothing extra:
 
@@ -104,7 +107,7 @@ Rules:
   are organizational; **ids stay globally sequential** across them.
 - Every case line is `- [ ] FOC-NNN: <behaviour + expected result> (priority) [REQ-<AREA>-NNN]`. The
   `[REQ-…]` tag **traces the case to the requirement it covers** (from `/analyze-requirements`); use
-  `[REQ: none]` when fed a page/feature directly with no `<AREA>_REQUIREMENTS.md`.
+  `[REQ: none]` when fed a page/feature directly with no `test-design/<area>/REQUIREMENTS.md`.
 - The **`## Deferred — do not implement`** section is mandatory whenever a destructive or
   forbidden case surfaces — it is listed there, never silently dropped, and never handed
   to `/test-write`.
@@ -182,8 +185,8 @@ enablement boundaries 0↔1↔2), and master-detail (correct user keying, stale-
 1. **Scope it.** State the feature/page/requirement in one line and what's explicitly
    out of scope (e.g. API-level, destructive Delete). Pick the 3-letter focus code.
 2. **Inventory the real surface.** Sources in priority order: the user's description →
-   any written requirement (a doc, or Testomatio `requirements` via the
-   `testomatio-edsson` MCP) → the **live page via the `playwright` MCP** (auth reuses the
+   any written requirement (the `test-design/<area>/REQUIREMENTS.md` from `/analyze-requirements`, or
+   Testomatio `requirements` via the `testomatio-edsson` MCP) → the **live page via the `playwright` MCP** (auth reuses the
    saved session — never type the admin password; exploration is **read-only**). List
    every control, column, action, input, state, role, default, and empty-state actually
    present. If a requirement exists, enumerate every acceptance criterion. **Flag any
@@ -200,16 +203,19 @@ enablement boundaries 0↔1↔2), and master-detail (correct user keying, stale-
    `/run` smoke lane), so assign it deliberately, not by chance.
 7. **Assign `<FOC>-NNN` ids.** Number sequentially across the whole file; continue any
    existing numbering for this area — never reuse issued ids.
-8. **Write `<AREA>_CHECKLIST.md`** at the **repo root**, in the exact format above (header block →
-   `##` sections → cases). It is a shared artifact — **commit it via `/open-pr` (`docs:`)** so the team
-   and the REQ→case→test traceability chain work from the same source.
+8. **Write the checklist to `test-design/<area>/CHECKLIST.md`** (create the `<area>` folder if absent;
+   `<area>` matches the `tests/web/<area>/` name — `auth`, `user-accounts`, …), in the exact format above
+   (header block → `##` sections → cases). Drop any redundant `<AREA>_` filename prefix — the folder names
+   the area. It is a shared artifact — **commit it via `/open-pr` (`docs:`)** so the team and the
+   REQ→case→test traceability chain work from the same source.
 9. **Deferred section.** Put every forbidden/destructive case (Delete, anything that
    corrupts shared data) under `## Deferred — do not implement` with a one-line reason.
    Never drop them silently; never hand them to `/test-write`.
 10. **Summarize & hand off.** Report counts by priority, the total, and every requirement
     gap / ambiguity you flagged. Optionally (on request) sync cases into Testomatio as
-    manual tests (`tests_create` / `suites_create`). Point the top-priority items at
-    `/test-write` for automation.
+    manual tests (`tests_create` / `suites_create`). Then **offer the next step** via
+    `AskUserQuestion` (CLAUDE.md Interaction model), don't auto-proceed: *[▶ capture locators with
+    `/analyze-page`] [▶ automate a top case with `/test-write`] [⏸ stop]*.
 
 ## Guardrails (from CLAUDE.md — never violate)
 

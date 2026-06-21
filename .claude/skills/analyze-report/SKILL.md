@@ -96,6 +96,7 @@ Most failures are test/infra/flake — don't cry wolf; equally, don't bury a rea
    - need to dig into a failing test's code → **`/analyze-test <@T-id or title>`**.
    - suspected flake to re-confirm → **`/run`** (e.g. re-run that test/tag).
    - coverage gap exposed → **`/test-write`**.
+   Present these as an **`AskUserQuestion` offer** (CLAUDE.md Interaction model) — the user picks; never auto-invoke a sibling skill.
 
 ## Stay read-only
 Report and route only. No code edits, no re-runs, no run-status changes — those are the

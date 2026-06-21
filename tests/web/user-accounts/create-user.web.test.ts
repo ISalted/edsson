@@ -12,7 +12,7 @@ import {
  * Status/Language/Creation source carry valid defaults, so only Name/Login/
  * E-mail are filled to reach a complete, savable form.
  */
-test.describe("User Accounts — Create User @web @user-accounts @create @mutating @S9d0e1f2a", () => {
+test.describe("User Accounts — Create User @web @user-accounts @create @mutating @regression @S9d0e1f2a", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });

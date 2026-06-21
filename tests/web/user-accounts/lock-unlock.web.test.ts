@@ -6,7 +6,7 @@ import { aqaUser } from "@data/user-accounts/user-account.data";
  * account). NOTE: persists users; no cleanup path (delete forbidden).
  * If Lock/Unlock shows a confirmation dialog, add its handling on first run.
  */
-test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @lock @mutating @S2a3b4c5d", () => {
+test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @lock @mutating @regression @S2a3b4c5d", () => {
   let user: ReturnType<typeof aqaUser>;
 
   test.beforeEach(async ({ webClient }) => {
@@ -17,7 +17,7 @@ test.describe("User Accounts — Lock / Unlock & Status @web @user-accounts @loc
     await webClient.userAccountsPage.filterByText("Login", user.login);
   });
 
-  test("UAC-048: locking an Active user sets Status=Inactive and greys the row @T425da9e4", async ({
+  test("UAC-048: locking an Active user sets Status=Inactive and greys the row @smoke @T425da9e4", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

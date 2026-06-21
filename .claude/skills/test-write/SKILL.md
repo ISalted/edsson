@@ -23,7 +23,8 @@ land), `.claude/docs/git-ci-guide.md` (branch/PR + MR standards + `workflow_disp
 4. **≤ ONE `describe` per file.** Multiple tests of the **same feature** are siblings inside that
    one `test.describe`; a genuinely **new feature** gets a new file + new describe. (file == feature == the `@<feature>` tag, e.g. `@create`.)
 5. **NUMBERING = the checklist id.** `<FOC>-NNN` — three logical, related letters + `00N` — taken
-   **VERBATIM** from `/test-design` as the title prefix. Never renumber, never invent.
+   **VERBATIM** from the `/test-design` checklist at `test-design/<area>/CHECKLIST.md` as the title prefix.
+   Never renumber, never invent.
 
 ## Layer boundary (route out — never patch `lib/`)
 This is the **single** rule for missing pieces (referenced by letter below):
@@ -147,6 +148,8 @@ the **MR standards** in `git-ci-guide`:
 - **Never push to `dev`/`prod`. Never merge.** For **non-test or batch** change-sets, that's
   **`/open-pr`** — don't double-PR the same change.
 
-### 7. Report
+### 7. Report + offer next
 Return the **PR url**, the `<FOC>` id, the **green-run link**, and a **2-line** oracle summary:
 (1) the observable outcome the test proves, (2) why it would fail if the feature were silently broken.
+Then **offer the next step** via `AskUserQuestion` (CLAUDE.md Interaction model), don't auto-proceed:
+*[▶ automate the next checklist case] [🔁 re-run on CI via `/run`] [⏸ stop — awaiting QA-lead review]*.

@@ -4,6 +4,7 @@
       "/Users/brudni/.nvm/versions/node/v22.22.0/bin/node",
       "/Users/brudni/edsson/node_modules/.bin/playwright",
       "test",
+      "--project=Parallel Web",
       "--list"
     ],
     "configFile": "/Users/brudni/edsson/playwright.config.ts",
@@ -2247,8 +2248,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-06-20T00:30:07.685Z",
-    "duration": 162.767,
+    "startTime": "2026-06-21T23:10:53.293Z",
+    "duration": 113.67400000000004,
     "expected": 0,
     "skipped": 69,
     "unexpected": 0,

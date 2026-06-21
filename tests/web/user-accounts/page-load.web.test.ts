@@ -1,6 +1,6 @@
 import { test, expect } from "@lib/fixtures";
 
-test.describe("User Accounts — Page Load @web @user-accounts @smoke @Sad3f1e2b", () => {
+test.describe("User Accounts — Page Load @web @user-accounts @smoke @regression @Sad3f1e2b", () => {
   test("UAC-001: page loads with the grid populated and the pager visible @T4e44a5e7", async ({
     webClient,
   }) => {

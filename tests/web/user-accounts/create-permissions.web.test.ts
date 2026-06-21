@@ -1,6 +1,6 @@
 import { test, expect } from "@lib/fixtures";
 
-test.describe("User Accounts — Create Permissions (popup, no save) @web @user-accounts @create @permissions @S6a7b8c9d", () => {
+test.describe("User Accounts — Create Permissions (popup, no save) @web @user-accounts @create @permissions @regression @S6a7b8c9d", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
     await webClient.userAccountsPage.clickCreate();

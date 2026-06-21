@@ -11,7 +11,7 @@ import {
  * so a failed restore can't corrupt shared data. NOTE: persists users; no
  * cleanup path (delete forbidden) — they accumulate on the dev grid.
  */
-test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @S0e1f2a3b", () => { let user: ReturnType<typeof aqaUser>;
+test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @regression @S0e1f2a3b", () => { let user: ReturnType<typeof aqaUser>;
 
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
@@ -35,7 +35,7 @@ test.describe("User Accounts — Edit User @web @user-accounts @edit @mutating @
     expect(await uap.isPermissionChecked(PERMS[0])).toBeFalsy();
   });
 
-  test("UAC-034: 'Save' persists changes, keeps the popup open, and the grid row updates @T77b144d6", async ({
+  test("UAC-034: 'Save' persists changes, keeps the popup open, and the grid row updates @smoke @T77b144d6", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

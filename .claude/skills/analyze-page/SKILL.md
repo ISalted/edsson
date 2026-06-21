@@ -216,7 +216,9 @@ Organized **by region** so completeness is auditable:
 - **Completeness ledger:** every region either captured or marked **"not present"**; plus **gaps** — states
   only reachable by mutating the app (e.g. a validation-invalid state needing a submit) flagged, NOT triggered.
 - **Verification:** all locators resolve to exactly one element; `tsc` clean.
-- **Handoff:** "Locators ready → `/sdk-builder` for the `@step` methods."
+- **Handoff:** report what was captured, then **offer the next step** via `AskUserQuestion`
+  (CLAUDE.md Interaction model), don't auto-proceed: *[▶ proceed to `/sdk-builder`] [✏ capture more
+  locators] [⏸ stop]*.
 
 ---
 

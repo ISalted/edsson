@@ -5,7 +5,7 @@ import {
   aqaUser,
 } from "@data/user-accounts/user-account.data";
 
-test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @S4e5f6a7b", () => {
+test.describe("User Accounts — Edit Pre-fill @web @user-accounts @edit @regression @S4e5f6a7b", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
     // KNOWN_USER isn't on page 1 — filter to it so the row is rendered

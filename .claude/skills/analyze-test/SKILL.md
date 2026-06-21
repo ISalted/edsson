@@ -119,6 +119,7 @@ Top-down, densest signal first.
    - re-confirm a suspected flake on CI → **`/run`** (that `@T`/tag, repeated).
    - check product-vs-test in the latest run → **`/analyze-report`**.
    - a code fix you can't do here → describe it precisely for a PR; **do not edit**.
+   Present these as an **`AskUserQuestion` offer** (CLAUDE.md Interaction model) — the user picks; never auto-invoke a sibling skill.
 
 ## Stay read-only
 Explain and audit only. No code edits, no runs, no PRs — name the sibling skill and stop;

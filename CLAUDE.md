@@ -29,6 +29,10 @@ skills pull it in — don't duplicate it here.
 - `lib/api/` — API clients (auth, user-accounts). `lib/config/` — `env.{baseUrl,apiUrl,adminEmail,adminPassword}`.
 - `lib/helpers/` — generic, page-agnostic utils ONLY. `lib/fixtures.ts` — fixtures `webClient` / `apiClient` / `helpers`.
 - `tests/web/<area>/*.web.test.ts` — tests (areas: `auth`, `user-accounts`).
+- `test-design/<area>/` — **design artifacts**, one folder per area mirroring the test areas:
+  `REQUIREMENTS.md` (written by `/analyze-requirements`) + `CHECKLIST.md` (written by `/test-design`),
+  read downstream by `/test-design`, `/sdk-builder`, `/test-write`. The spec layer — **not** code, so
+  never in `lib/`; never the repo root.
 - Path aliases: `@lib @pages @data @api @helpers @root`.
 
 ## App surface (pages & navigation)
@@ -109,10 +113,10 @@ skills pull it in — don't duplicate it here.
 ## Authoring workflow — the skill pipeline
 Work flows through focused skills, each owning ONE layer (invoke `/<name>`):
 1. **`/analyze-requirements`** — raw business input (Jira text / file / prose) → clean, atomic, **testable**
-   `REQ-<AREA>-NNN` requirements + acceptance criteria (`<AREA>_REQUIREMENTS.md`); audited vs ISO/IEC/IEEE
+   `REQ-<AREA>-NNN` requirements + acceptance criteria (`test-design/<area>/REQUIREMENTS.md`); audited vs ISO/IEC/IEEE
    29148, ambiguity **asked-or-flagged**, never silently invented.
-2. **`/test-design`** — requirements/page → a prioritized, deduplicated `<FOC>-NNN` checklist (each case
-   traces back to a `REQ-` id).
+2. **`/test-design`** — requirements/page → a prioritized, deduplicated `<FOC>-NNN` checklist
+   (`test-design/<area>/CHECKLIST.md`; each case traces back to a `REQ-` id).
 3. **`/analyze-page`** — analyze the live page → write **verified locators** into a **page OR component**
    object (`lib/pages/<page>.page.ts` or `components/<name>.component.ts`); scaffolds the object + its
    mixin (in `mixins.ts`) + `WebClient` wiring; an `AppRoute` entry **only for a page** (components have none).
@@ -125,3 +129,12 @@ PRs its own test), **`/run`** (trigger a CI run), **`/analyze-report`** (triage 
 
 **Layer rule:** tests never touch `lib/`; locators (`/analyze-page`) ≠ methods (`/sdk-builder`) ≠ tests
 (`/test-write`). Branch `aqa/<short-desc>` + PR to `dev`; the QA lead reviews and merges.
+
+## Interaction model (skills guide you, step by step)
+Skills are a **guided assistant, not a black box** — use the interactive question UI
+(`AskUserQuestion`), not plain-text questions, and **offer, never auto-proceed**:
+- **Missing info / ambiguity** → ask one focused question with options before acting.
+- **A skill finished (layer boundary)** → report what was produced, then **offer the next step** with
+  options — e.g. *[▶ proceed to `/sdk-builder`] [✏ adjust] [⏸ stop]*. You stay at the wheel.
+- **Side-effecting action** (CI run, PR, any app write) → confirm before doing it (see Guardrails).
+Don't gate read-only work or within-layer micro-steps (e.g. each locator) — that's friction, not guidance.

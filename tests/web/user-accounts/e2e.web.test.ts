@@ -5,12 +5,12 @@ import { aqaUser, PERMS } from "@data/user-accounts/user-account.data";
  * End-to-end flows across create/edit/lock + grid/detail. Each operates on a
  * freshly-created throwaway user. NOTE: persists users; no cleanup path.
  */
-test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @S4c5d6e7f", () => {
+test.describe("User Accounts — End-to-End @web @user-accounts @e2e @mutating @regression @S4c5d6e7f", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });
 
-  test("UAC-061: create a user, filter to find it, and verify the submitted values in the row @T94ad76c8", async ({
+  test("UAC-061: create a user, filter to find it, and verify the submitted values in the row @smoke @T94ad76c8", async ({
     webClient,
   }) => {
     const uap = webClient.userAccountsPage;

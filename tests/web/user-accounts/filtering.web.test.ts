@@ -1,6 +1,6 @@
 import { test, expect } from "@lib/fixtures";
 
-test.describe("User Accounts — Filtering @web @user-accounts @filter @S5f6a7b8c", () => {
+test.describe("User Accounts — Filtering @web @user-accounts @filter @regression @S5f6a7b8c", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });

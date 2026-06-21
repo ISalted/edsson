@@ -1,7 +1,7 @@
 import { test, expect } from "@lib/fixtures";
 import { KNOWN_USER } from "@data/user-accounts/user-account.data";
 
-test.describe("User Accounts — Toolbar & Selection State @web @user-accounts @selection @S1b2c3d4e", () => {
+test.describe("User Accounts — Toolbar & Selection State @web @user-accounts @selection @regression @S1b2c3d4e", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
   });

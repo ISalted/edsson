@@ -1,7 +1,7 @@
 import { test, expect } from "@lib/fixtures";
 import { env } from "@lib/config";
 
-test.describe("Authentication @web @auth @S00000000", () => {
+test.describe("Authentication @web @auth @regression @S00000000", () => {
   // Auth/login flow must start unauthenticated — drop the shared session.
   test.use({ storageState: { cookies: [], origins: [] } });
 
@@ -9,7 +9,7 @@ test.describe("Authentication @web @auth @S00000000", () => {
     await webClient.goTo("/login/");
   });
 
-  test(`1. Login: valid credentials redirect to user-accounts @T00000001`, async ({
+  test(`1. Login: valid credentials redirect to user-accounts @smoke @T00000001`, async ({
     webClient,
     apiClient
   }) => {

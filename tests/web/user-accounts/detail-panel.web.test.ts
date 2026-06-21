@@ -1,7 +1,7 @@
 import { test, expect } from "@lib/fixtures";
 import { KNOWN_USER, PERMS, aqaUser } from "@data/user-accounts/user-account.data";
 
-test.describe("User Accounts — Detail Panel @web @user-accounts @detail @S2c3d4e5f", () => {
+test.describe("User Accounts — Detail Panel @web @user-accounts @detail @regression @S2c3d4e5f", () => {
   test.beforeEach(async ({ webClient }) => {
     await webClient.goTo("/administration/user-accounts/");
     // KNOWN_USER isn't on page 1 — filter to it so the row is rendered

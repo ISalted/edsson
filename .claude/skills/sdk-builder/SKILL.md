@@ -41,7 +41,8 @@ locator block above the banner.
    a method will touch must already have a private locator/factory above the banner.
    Missing object, or a method needs an element with no locator → **STOP, route to
    `/analyze-page`.**
-2. **List the EXACT methods the cases need** — from the `/test-design` checklist (or the
+2. **List the EXACT methods the cases need** — from the `/test-design` checklist at
+   `test-design/<area>/CHECKLIST.md` (or the
    stated requirement): every act and every read-back the specs will call. **Build only
    those — no speculative API.**
 3. **For each method, decide its OBJECT** (page vs component — §Placement) **and design it**
@@ -154,5 +155,5 @@ data-agnostic, typed discipline applies:
 
 ## Hand off
 Report each method added (object it lives on + signature + one-line intent) and any Path B
-SDK, confirm `tsc` green, then hand to **`/test-write`** to write the thin specs that consume
-it.
+SDK, confirm `tsc` green, then **offer the next step** via `AskUserQuestion` (CLAUDE.md Interaction
+model), don't auto-proceed: *[▶ proceed to `/test-write`] [✏ add/adjust a method] [⏸ stop]*.

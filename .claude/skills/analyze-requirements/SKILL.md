@@ -1,6 +1,6 @@
 ---
 name: analyze-requirements
-description: Turn business requirements — a stated spec (pasted Jira ticket, doc/text file, prose) OR a missing/weak one you must DERIVE from the live app + domain — into a clean, atomic, TESTABLE, ID'd requirements artifact that /test-design consumes. Read the source critically, extract explicit AND implicit/non-functional requirements, audit each against the ISO/IEC/IEEE 29148 quality characteristics (keystone: Verifiable — acceptance criteria mandatory), resolve every ambiguity by asking or flagging an assumption (never silently invent), and write <AREA>_REQUIREMENTS.md with REQ-IDs + acceptance criteria + traceability. Use when asked to analyze/clarify/refine/intake requirements, a ticket, a spec, or acceptance criteria — including when there is no spec and you must recover requirements from the app. The step BEFORE /test-design — produces REQUIREMENTS ONLY, no test cases, no automation.
+description: Turn business requirements — a stated spec (pasted Jira ticket, doc/text file, prose) OR a missing/weak one you must DERIVE from the live app + domain — into a clean, atomic, TESTABLE, ID'd requirements artifact that /test-design consumes. Read the source critically, extract explicit AND implicit/non-functional requirements, audit each against the ISO/IEC/IEEE 29148 quality characteristics (keystone: Verifiable — acceptance criteria mandatory), resolve every ambiguity by asking or flagging an assumption (never silently invent), and write test-design/<area>/REQUIREMENTS.md with REQ-IDs + acceptance criteria + traceability. Use when asked to analyze/clarify/refine/intake requirements, a ticket, a spec, or acceptance criteria — including when there is no spec and you must recover requirements from the app. The step BEFORE /test-design — produces REQUIREMENTS ONLY, no test cases, no automation.
 ---
 
 # Analyze requirements (requirements intake)
@@ -16,7 +16,9 @@ ambiguity through silently. The bar is **ISO/IEC/IEEE 29148** (the requirements-
 standard), and for AQA the keystone characteristic is **Verifiable** — *no acceptance
 criteria => not yet a requirement.*
 
-Output is a single markdown file `<AREA>_REQUIREMENTS.md`. This skill is self-contained:
+Output is a single markdown file at **`test-design/<area>/REQUIREMENTS.md`** — the project's home for
+design artifacts, one folder per area mirroring `tests/web/<area>/` (`auth`, `user-accounts`, …); never
+the repo root and never `lib/`. This skill is self-contained:
 quality characteristics, audit, REQ format, and process are all below.
 
 ## Input — TWO source modes (most features are a MIX)
@@ -152,11 +154,11 @@ downstream checklist will use — User Accounts → `UAC`, Groups → `GRP`, Loc
 zero-padded **sequential** number: `REQ-UAC-001`, `REQ-UAC-002`, …
 
 - One area per artifact; number globally across the file in appearance order.
-- **Continue existing numbering** — if a `<AREA>_REQUIREMENTS.md` already exists, start at
+- **Continue existing numbering** — if `test-design/<area>/REQUIREMENTS.md` already exists, start at
   the next integer; never reuse or renumber an issued id. Downstream `<FOC>-NNN` cases cite
   these ids in their traceability, so they must be stable.
 
-## Output format — `<AREA>_REQUIREMENTS.md` (exact)
+## Output format — `REQUIREMENTS.md` (exact)
 
 ```
 # <Area> — Requirements
@@ -265,13 +267,15 @@ Rules:
 6. **Reformulate.** Rewrite into clean, atomic, testable requirements — each with a
    REQ-ID, one-sentence statement, **acceptance criteria** (Given/When/Then or objective
    conditions including the negative/error case), type, priority, source, status.
-7. **Write `<AREA>_REQUIREMENTS.md`** at the **repo root**, in the exact format above, including the
+7. **Write `test-design/<area>/REQUIREMENTS.md`** (create the `<area>` folder if absent; `<area>` matches
+   the `tests/web/<area>/` name; drop any redundant `<AREA>_` filename prefix), in the exact format above, including the
    **Open questions & assumptions** and **Traceability** sections. It is a shared artifact — **commit it
    via `/open-pr` (`docs:`)** so `/test-design` and the team work from the same source.
 8. **Summarize & hand off.** Report counts by status (clear / assumed / derived /
    needs-clarification) and by priority, list every open question, suspected defect, and
-   load-bearing `derived` requirement up front, then point `/test-design` at the artifact.
-   If there are blocking open questions, surface them to the user **before** handoff.
+   load-bearing `derived` requirement up front. If there are blocking open questions, surface them
+   **before** handoff. Then **offer the next step** via `AskUserQuestion` (CLAUDE.md Interaction
+   model), don't auto-proceed: *[▶ proceed to `/test-design`] [✏ resolve open questions first] [⏸ stop]*.
 
 ## Guardrails (never violate)
 
