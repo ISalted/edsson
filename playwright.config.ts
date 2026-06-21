@@ -29,7 +29,17 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 1,
   workers: process.env.CI ? 1 : 1,
-  reporter: reporters,
+  reporter: [
+    ["list"],
+    ["html"],
+    // ["json", { outputFile: process.env.RESULTS_JSON }],
+    // [
+    //   "./node_modules/@testomatio/reporter/lib/adapter/playwright.js",
+    //   {
+    //     apiKey: process.env.TESTOMATIO,
+    //   },
+    // ],
+  ],
   use: {
     baseURL: process.env.BASE_URL,
     trace: 'retain-on-failure',

@@ -21,7 +21,8 @@ Shared knowledge pulled in by the `test-write`, `open-pr` and `run` skills. Repo
 ## CI — how tests actually run
 - Workflow **`aqa.yml`** on the self-hosted runner **`edsson-1`**, triggered by
   **`workflow_dispatch`** with input **`grep`** (filter; empty = all).
-- `globalSetup.ts` logs in once → `session-storage.json` (reused by `Parallel Web`).
+- `globalSetup.ts` logs in once → writes **`session-storage.json`** (UI storageState, reused by
+  `Parallel Web`) **and `sessions.json`** (`{authToken, sessionId}` consumed by the `apiClient` fixture).
 - The "Run tests" step has **`continue-on-error: true`** → the GitHub run stays green even
   when individual tests fail; true pass/fail lives in **Testomatio** + the report artifacts.
 - Artifacts uploaded `if: always()`: `playwright-html-report` (+ `playwright-json-report`).

@@ -21,7 +21,7 @@ land), `.claude/docs/git-ci-guide.md` (branch/PR + MR standards + `workflow_disp
 3. **`expect` ALWAYS in the test, NEVER in an SDK method.** SDK methods *act and return*; the test
    judges. Hiding `expect` in `lib/` makes a failure unreadable.
 4. **≤ ONE `describe` per file.** Multiple tests of the **same feature** are siblings inside that
-   one `test.describe`; a genuinely **new feature** gets a new file + new describe. (file == feature == `@feature` tag.)
+   one `test.describe`; a genuinely **new feature** gets a new file + new describe. (file == feature == the `@<feature>` tag, e.g. `@create`.)
 5. **NUMBERING = the checklist id.** `<FOC>-NNN` — three logical, related letters + `00N` — taken
    **VERBATIM** from `/test-design` as the title prefix. Never renumber, never invent.
 
@@ -76,7 +76,7 @@ This is the **single** rule for missing pieces (referenced by letter below):
 File `tests/web/<area>/<feature>.web.test.ts` — extend the feature's existing file if it fits.
 - One `describe` (rule 4); `beforeEach` navigates only; body is **Arrange → Act → Assert** (B, E).
 - **Title** (H): `<FOC>-NNN: <behaviour>`; **tags** on both `describe` and test:
-  `@web @<area> @<feature>` (+ `@mutating` if it writes).
+  `@web @<area> @<feature>` (+ `@mutating` if it writes; + `@smoke` if it's a critical/high core-flow per `/test-design`).
 - **IDs & sync:** author new tests with **no `@T`/`@S`** — the `@testomatio/reporter` assigns and
   writes `@T` (test) / `@S` (suite) ids back into source on a synced run (CI / QA-lead-owned); expect
   them to appear after sync. **Never hand-write or invent a `@T`.** When **extending** a file, keep its
@@ -123,10 +123,11 @@ real `userAccountsPage` methods. The describe carries no `@S` — it's assigned 
 
 ### 5. Verify it works (bar G — don't finalize on a guess)
 - `npx tsc --noEmit` → fix type errors.
-- **Run on CI and confirm GREEN** before the PR: `workflow_dispatch` on `aqa.yml` on your branch,
-  `grep` = the **full** `<FOC>-NNN` (substring match — the full id, so `UAC-04` doesn't sweep
-  `UAC-040..049`). Legacy areas with no `<FOC>` prefix (e.g. `auth`, titled `1./2.`) → grep the `@T`
-  id or the full title. Don't run mutating flows locally.
+- **Branch, commit, push — then run on CI and confirm GREEN** before the PR: branch `aqa/<short-desc>`
+  off `dev`, conventional commit (`test: <FOC>-NNN <behaviour>`), push. Then `workflow_dispatch` on
+  `aqa.yml` **on that branch**, `grep` = the **full** `<FOC>-NNN` (substring match — the full id, so
+  `UAC-04` doesn't sweep `UAC-040..049`). Legacy areas with no `<FOC>` prefix (e.g. `auth`, titled
+  `1./2.`) → grep the `@T` id or the full title. Don't run mutating flows locally.
 - **GREEN means the Testomatio result, NOT the GitHub badge** — `aqa.yml`'s *Run tests* step is
   `continue-on-error: true`, so the GitHub run goes green regardless of failures. Read pass/fail from
   **Testomatio** (project `edsson`).
@@ -136,10 +137,13 @@ real `userAccountsPage` methods. The describe carries no `@S` — it's assigned 
   method → `/sdk-builder`; missing/wrong locator → `/analyze-page`. Never patch `lib/`.
 
 ### 6. Land it — open the PR (bar H, the review gate)
-The PR finale stays here for a single new test. Apply the **MR standards** in `git-ci-guide`:
-- Branch `aqa/<short-desc>` off `dev`; conventional commit + **PR title** `test: <FOC>-NNN <behaviour>`.
+The PR finale stays here for a single new test. The branch is **already pushed and green** (§5). Apply
+the **MR standards** in `git-ci-guide`:
+- Open the PR `aqa/<short-desc>` → `dev`. **PR title** `test: <FOC>-NNN <behaviour>`.
 - **Body**: what it covers · the `<FOC>` id · link to the checklist item / Testomatio test / requirement
   · the **green CI-run link** · "for QA-lead review — do not merge".
+- **SDK + test together:** a new test **plus the SDK it needs** (locators/methods just added) land as
+  **one** test-write PR; SDK with no immediate test goes via `/open-pr`.
 - **Never push to `dev`/`prod`. Never merge.** For **non-test or batch** change-sets, that's
   **`/open-pr`** — don't double-PR the same change.
 

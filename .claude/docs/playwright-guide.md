@@ -39,7 +39,7 @@ Prefer **user-facing, resilient** locators; fall back only when forced. Top to b
 DevExtreme + CSS-module styling means role/name often don't map cleanly — so:
 - Use `getByRole` where the widget exposes proper ARIA (buttons, `aria-checked` checkboxes, `aria-sort`).
 - Fall back to **stable structural `.dx-*` classes** for grid internals: `.dx-data-row`,
-  `.dx-select-checkbox`, `.dx-texteditor-input`, `.dx-invalid`, `.dx-popup-wrapper`.
+  `.dx-select-checkbox`, `.dx-checkbox-checked`, `.dx-texteditor-input`, `.dx-invalid`, `.dx-popup-wrapper`.
 - Hashed CSS-module classes → **partial match on the stable prefix**: `[class*="UserAccountForm_formLabel"]`
   (the `_xxxx` hash is volatile; the prefix is stable).
 - The grid filters client-side with **debounce** → filter first, then read; wait for the row, don't sleep.

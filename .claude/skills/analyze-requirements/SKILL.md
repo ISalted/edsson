@@ -265,8 +265,9 @@ Rules:
 6. **Reformulate.** Rewrite into clean, atomic, testable requirements — each with a
    REQ-ID, one-sentence statement, **acceptance criteria** (Given/When/Then or objective
    conditions including the negative/error case), type, priority, source, status.
-7. **Write `<AREA>_REQUIREMENTS.md`** in the exact format above, including the **Open
-   questions & assumptions** and **Traceability** sections.
+7. **Write `<AREA>_REQUIREMENTS.md`** at the **repo root**, in the exact format above, including the
+   **Open questions & assumptions** and **Traceability** sections. It is a shared artifact — **commit it
+   via `/open-pr` (`docs:`)** so `/test-design` and the team work from the same source.
 8. **Summarize & hand off.** Report counts by status (clear / assumed / derived /
    needs-clarification) and by priority, list every open question, suspected defect, and
    load-bearing `derived` requirement up front, then point `/test-design` at the artifact.

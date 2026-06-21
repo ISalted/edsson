@@ -84,7 +84,7 @@ guessing, exploratory, security, accessibility, persistence, i18n>.
 
 ## <Section — e.g. Page Load & Navigation>
 
-- [ ] FOC-001: <one specific, observable behaviour + its expected result> (priority)
+- [ ] FOC-001: <one specific, observable behaviour + its expected result> (priority) `[REQ-<AREA>-NNN]`
 - [ ] FOC-002: <…> (priority)
 
 ## <Section — e.g. Filtering>
@@ -102,7 +102,9 @@ Rules:
   Grouping, Filtering, Pagination, Selection & Toolbar, Detail Panel, Create/Edit,
   Validation, Permissions, State/Lock, Persistence, Security, Accessibility…). Sections
   are organizational; **ids stay globally sequential** across them.
-- Every case line is `- [ ] FOC-NNN: <behaviour + expected result> (priority)`.
+- Every case line is `- [ ] FOC-NNN: <behaviour + expected result> (priority) [REQ-<AREA>-NNN]`. The
+  `[REQ-…]` tag **traces the case to the requirement it covers** (from `/analyze-requirements`); use
+  `[REQ: none]` when fed a page/feature directly with no `<AREA>_REQUIREMENTS.md`.
 - The **`## Deferred — do not implement`** section is mandatory whenever a destructive or
   forbidden case surfaces — it is listed there, never silently dropped, and never handed
   to `/test-write`.
@@ -193,11 +195,14 @@ enablement boundaries 0↔1↔2), and master-detail (correct user keying, stale-
 5. **DEDUPE.** Remove or merge any two cases that would pass/fail for the same reason or
    assert the same behaviour through a different control. This is mandatory, not optional.
 6. **Prioritize by risk.** Assign critical/high/medium/low per the legend, using impact ×
-   likelihood. Security, data-corruption, and core-flow cases trend critical/high.
+   likelihood. Security, data-corruption, and core-flow cases trend critical/high. **Tag the
+   critical/high core-flow cases as `@smoke`** — `@smoke` is the load-bearing CI grep filter (the
+   `/run` smoke lane), so assign it deliberately, not by chance.
 7. **Assign `<FOC>-NNN` ids.** Number sequentially across the whole file; continue any
    existing numbering for this area — never reuse issued ids.
-8. **Write `<AREA>_CHECKLIST.md`** in the exact format above (header block → `##` sections
-   → cases).
+8. **Write `<AREA>_CHECKLIST.md`** at the **repo root**, in the exact format above (header block →
+   `##` sections → cases). It is a shared artifact — **commit it via `/open-pr` (`docs:`)** so the team
+   and the REQ→case→test traceability chain work from the same source.
 9. **Deferred section.** Put every forbidden/destructive case (Delete, anything that
    corrupts shared data) under `## Deferred — do not implement` with a one-line reason.
    Never drop them silently; never hand them to `/test-write`.
