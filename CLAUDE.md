@@ -108,12 +108,16 @@ skills pull it in — don't duplicate it here.
 
 ## Authoring workflow — the skill pipeline
 Work flows through focused skills, each owning ONE layer (invoke `/<name>`):
-1. **`/test-design`** — requirement/page → a prioritized, deduplicated case checklist (`<FOC>-NNN` ids).
-2. **`/analyze-page`** — analyze the live page → write **verified locators** into a **page OR component**
+1. **`/analyze-requirements`** — raw business input (Jira text / file / prose) → clean, atomic, **testable**
+   `REQ-<AREA>-NNN` requirements + acceptance criteria (`<AREA>_REQUIREMENTS.md`); audited vs ISO/IEC/IEEE
+   29148, ambiguity **asked-or-flagged**, never silently invented.
+2. **`/test-design`** — requirements/page → a prioritized, deduplicated `<FOC>-NNN` checklist (each case
+   traces back to a `REQ-` id).
+3. **`/analyze-page`** — analyze the live page → write **verified locators** into a **page OR component**
    object (`lib/pages/<page>.page.ts` or `components/<name>.component.ts`); scaffolds the object + its
    mixin (in `mixins.ts`) + `WebClient` wiring; an `AppRoute` entry **only for a page** (components have none).
-3. **`/sdk-builder`** — add the `@step` act-and-return **methods** on those locators (+ helpers/fixtures/api/data).
-4. **`/test-write`** — write the **thin test** that consumes the SDK, verify it green on CI, and open **its own PR**.
+4. **`/sdk-builder`** — add the `@step` act-and-return **methods** on those locators (+ helpers/fixtures/api/data).
+5. **`/test-write`** — write the **thin test** that consumes the SDK, verify it green on CI, and open **its own PR**.
 
 Support skills: **`/open-pr`** (land a **non-test or batched** change-set as a PR — `/test-write` already
 PRs its own test), **`/run`** (trigger a CI run), **`/analyze-report`** (triage a run — read-only),

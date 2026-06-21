@@ -1,12 +1,14 @@
 ---
 name: test-design
-description: Design a prioritized, deduplicated test-case CHECKLIST for a feature, page, or requirement BEFORE any automation — systematically applies the full test-design technique grid (equivalence partitioning, boundary values, decision tables, state transition, pairwise, plus security, accessibility, persistence, i18n) and outputs a checklist of concrete, ID'd cases in the project's format. Use when asked to create test cases, a checklist, test scenarios, coverage, or to "break down" / decompose a feature or requirement into cases. This is the step BEFORE /test-write.
+description: Design a prioritized, deduplicated test-case CHECKLIST for a feature, page, or requirement BEFORE any automation — systematically applies the full test-design technique grid (equivalence partitioning, boundary values, decision tables, state transition, pairwise, plus security, accessibility, persistence, i18n) and outputs a checklist of concrete, ID'd cases in the project's format. Use when asked to create test cases, a checklist, test scenarios, coverage, or to "break down" / decompose a feature or requirement into cases. This is the step AFTER /analyze-requirements (it consumes the `<AREA>_REQUIREMENTS.md` artifact) and BEFORE /test-write.
 ---
 
 # Design a test-case checklist
 
-The **upstream** phase of the QA pipeline: a requirement / feature / page becomes a
-prioritized, **deduplicated** checklist of cases. Each case is concrete enough that
+The **design** phase of the QA pipeline: a requirement — ideally the `<AREA>_REQUIREMENTS.md`
+from `/analyze-requirements`, or a feature / page directly — becomes a prioritized,
+**deduplicated** checklist of cases. Fed a requirements artifact, **trace each case to its
+`REQ-<AREA>-NNN`** so coverage maps back to a need. Each case is concrete enough that
 `/test-write` can later automate it as **exactly one** test. You apply test-design theory
 deliberately — not improvise — and the bar is ISTQB-grade: **minimal but sufficient**.
 
