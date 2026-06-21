@@ -39,7 +39,7 @@ test.describe("User Accounts — Stored XSS @web @user-accounts @security @mutat
 
     await webClient.goTo("/administration/user-accounts/");
     await uap.filterByText("Login", login);
-    await uap.clickEditRow(login); // Details renders in the edit popup
+    await uap.clickEditRow(login); 
     expect(await uap.isCreatePopupVisible()).toBeTruthy();
 
     const executed = await webClient.page.evaluate(
