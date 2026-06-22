@@ -59,11 +59,14 @@ Put each method on the object that **OWNS the behaviour**:
 - **Behaviour bound to ONE route/screen** → method on the **PAGE object** (e.g. a grid flow
   on the page that hosts that grid).
 - **Behaviour on a reusable widget appearing on ≥2 pages** (header, nav, a shared
-  dialog/grid widget — anything composed into the `WebClient`) → method on the **COMPONENT
-  object**, kept **PAGE-AGNOSTIC**: no route assumptions, no `goTo`, no host-page knowledge;
-  identifiers/values come **in** as parameters. Concretely, a shared nav method **takes the
-  destination as typed-union args and never hardcodes where it lands** — so every host page
-  reuses it.
+  dialog/grid widget) → method on the **COMPONENT object** (`components/*.component.ts`), kept
+  **PAGE-AGNOSTIC**: no route assumptions, no `goTo`, no host-page knowledge; identifiers/values
+  come **in** as parameters. Concretely, a shared nav method **takes the destination as typed-union
+  args and never hardcodes where it lands** — so every host page reuses it.
+- **Composition (how it's reached):** a component **mixes into the PAGES that render it, NOT into
+  `WebClient`** — its methods are called via `webClient.<page>.<component>.…` (e.g.
+  `webClient.userAccountsPage.header.navigateTo(...)`). Your method lives on the component class;
+  `/analyze-page` already wired the mixin into the page(s).
 - Mis-placement is a design bug: shared-widget logic on a page object **kills reuse**;
   route-specific flow on a component **leaks page knowledge** into a shared object.
 - If the right object — or a locator it needs — doesn't exist yet → route to

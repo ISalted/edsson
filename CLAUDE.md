@@ -40,7 +40,8 @@ skills pull it in — don't duplicate it here.
   sections: **Administration, AI, Marketing, Sales, Production, Finance, Analytics, Resources,
   Website**, each with sub-sections (some with sub-sub items). Types `TopNav` / `SubNav<T>` /
   `SubSubNav<T,S>` give typed, autocompleted navigation.
-- Navigate via the header: `webClient.header.navigateTo(section, subSection?, item?)`
+- Navigate via the header **component** (reached through its page, not flat on `webClient`):
+  `webClient.userAccountsPage.header.navigateTo(section, subSection?, item?)`
   e.g. `navigateTo("Administration", "Authorization", "User Accounts")`.
 - Known direct routes in `AppRoute` (`lib/pages/edsson-app.ts`): `/`, `/login/`,
   `/administration/user-accounts/`. Use `webClient.goTo(route)` — relative to `baseURL`, never a full URL.
@@ -48,10 +49,12 @@ skills pull it in — don't duplicate it here.
 
 ## Fixtures & architecture (detail: `code-style-guide.md`)
 - Every test: `import { test, expect } from "@lib/fixtures";`
-- Three fixtures: **`webClient`** (all UI work; mixin-composed — exposes `.header` HeaderComponent,
-  `.loginPage`, `.userAccountsPage`, `.goTo(route)`, and `.page` raw Playwright `Page` only when
-  unavoidable); **`apiClient`** (auth / user-accounts API — reuses the saved token from **`sessions.json`**);
+- Three fixtures: **`webClient`** (all UI work; composes **page** mixins — exposes `.loginPage`,
+  `.userAccountsPage`, `.goTo(route)`, and `.page` raw Playwright `Page` only when unavoidable);
+  **`apiClient`** (auth / user-accounts API — reuses the saved token from **`sessions.json`**);
   **`helpers`** (generic, page-agnostic utils).
+- **Component objects** (header, nav, …) compose into the **pages** that render them — reach them
+  **through the page**: `webClient.userAccountsPage.header.waitForLogo()`, **never** `webClient.header`.
 - POM methods **act and return** (never assert); each public method is decorated `@step()`
   (`@helpers/step`) → a named step in the Playwright / Testomatio report. Keep that on new methods.
 - `webClient.waitForTimeout(n)` takes **seconds**, not ms. Prefer real waits over sleeps.

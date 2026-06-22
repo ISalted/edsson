@@ -16,15 +16,25 @@ The short rules live in `CLAUDE.md`. This is the detail the code skills
 - **Helpers** (`lib/helpers/…`) — generic, page-agnostic utilities only.
 
 ## Page object vs component object
-- **Page object** (`*.page.ts`) — models ONE route/screen; owns that page's selectors + flows. One URL = one page object.
-- **Component object** (`components/*.component.ts`) — models a **reusable UI region that appears on ≥2 pages** (header, nav, a shared dialog/grid widget); composed into the `WebClient` and exposed as a property (e.g. `webClient.header`). Kept **page-agnostic** — no route assumptions, identifiers come in as params — so every host page reuses it.
-- **Rule:** bound to one route → **page object**; appears across pages → **component object**. Both extend `BasePage`, keep locators private, methods act-and-return + `@step`. A component has **no route** in `AppRoute`.
+- **Page object** (`*.page.ts`) — models ONE route/screen; owns that page's selectors + flows. It also
+  **composes the component objects it renders** by extending their mixins — e.g.
+  `class UserAccountsPage extends HeaderMixin(BasePage)` gives it `this.header`. One URL = one page object.
+- **Component object** (`components/*.component.ts`) — a **reusable UI region that appears on ≥2 pages**
+  (header, nav, a shared dialog/grid). It's a `class XComponent extends BasePage` (private locators +
+  `@step` methods) **plus** an `XMixin(Base)` that injects it as a property (`this.x = new XComponent(this.page)`).
+  Page-agnostic — no route, no host-page knowledge, identifiers passed in — so every page reuses the **one** class.
+- **Composition (the part that matters):** a component **mixes into the PAGES that render it, NOT into
+  `WebClient`.** `WebClient` composes **page mixins only** (`UserAccountsMixin(LoginMixin(BasePage))`) →
+  `webClient.userAccountsPage`, `webClient.loginPage`. Reach a component **through its page**:
+  **`webClient.userAccountsPage.header.waitForLogo()`** — never `webClient.header`.
+- **Rule:** bound to one route → **page object**; appears across pages → **component object**. Both extend
+  `BasePage`, keep locators private, methods act-and-return + `@step`. A component has **no route**.
 
 ## Fixtures (`lib/fixtures.ts`)
 Import in every test: `import { test, expect } from "@lib/fixtures";`
-- `webClient` — the app. Mixin-composed in `lib/pages/edsson-app.ts`:
-  `UserAccountsMixin(LoginMixin(HeaderMixin(BasePage)))`. Exposes `.header`, `.loginPage`,
-  `.userAccountsPage`, `.goTo(route)`, `.page`.
+- `webClient` — the app. **Page** mixins composed in `lib/pages/edsson-app.ts`:
+  `UserAccountsMixin(LoginMixin(BasePage))`. Exposes `.loginPage`, `.userAccountsPage`, `.goTo(route)`,
+  `.page`. Components (header, …) are reached **through their page** — `webClient.userAccountsPage.header`.
 - `apiClient` — API client, reuses the saved session token.
 - `helpers` — generic utils.
 
@@ -35,9 +45,10 @@ Import in every test: `import { test, expect } from "@lib/fixtures";`
 - **Liskov / interface:** `is…Visible()`/`is…Enabled()` consistently return booleans the
   test asserts on; keep that contract.
 - **DRY:** reuse existing POM flows and `aqaUser()`; never copy a selector into a test.
-- **A new object** = a `*.page.ts` (page) or `components/*.component.ts` (component) extending
-  `BasePage` + a mixin in `mixins.ts`, exposed on `WebClient`. A page with a known direct route adds
-  it to `AppRoute`; a component has none.
+- **A new page** = a `*.page.ts` extending `BasePage` (+ the component mixins it renders, e.g.
+  `HeaderMixin`) + a page mixin in `mixins.ts` wired into `WebClient`; add its route to `AppRoute` if known.
+- **A new component** = a `components/*.component.ts` (the class **+** its `XMixin`); wire `XMixin` into
+  the **pages** that render it (each `extends XMixin(...)`), **not** into `WebClient`; no route.
 
 ## Selectors (DevExtreme + CSS modules)
 - Grid internals: `.dx-data-row`, `.dx-select-checkbox`, `.dx-texteditor-input`,

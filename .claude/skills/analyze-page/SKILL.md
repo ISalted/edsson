@@ -189,18 +189,19 @@ the sample used. No locator is "done" on inspection alone; only on a clean resol
      `.claude/docs/code-style-guide.md`): bound to ONE route/screen → a **page object** (`<page>.page.ts`);
      a reusable widget that appears on ≥2 pages (header, nav, a shared dialog/grid) → a **component
      object** (`components/<widget>.component.ts`), **page-agnostic, no route**. Then create the class and
-     wire it in, leaving the methods area as a placeholder:
-     - **Class** → `export class <Name>(Page|Component) extends BasePage { … }` (import `step`,
-       `BasePage`, `Locator` like the existing objects). SELECTORS banner + locator fields, then a single
-       placeholder — **write no methods:**
+     wire it **per its type**, leaving the methods area as a placeholder:
+     - **Class** → `export class <Name>(Page|Component) extends BasePage { … }` — a **page** also extends
+       the component mixins it renders, e.g. `export class <Name>Page extends HeaderMixin(BasePage)`.
+       SELECTORS banner + locator fields, then a single placeholder — **write no methods:**
        ```ts
        // ── METHODS — added by /sdk-builder (do not add @step methods here) ──
        ```
-     - **Mixin** (`lib/pages/mixins.ts`): add a `<Name>Mixin` mirroring the existing mixins.
-     - **Compose** (`lib/pages/edsson-app.ts`): wrap the new mixin into the `WebClient` composition chain
-       alongside the existing mixins.
-     - **Route** (`AppRoute`): a **page object** with a known direct route → add it; a **component object
-       has no route** → skip.
+     - **Mixin** (`lib/pages/mixins.ts`): add a `<Name>Mixin` mirroring the existing ones (it injects the
+       object as a property: `this.<name> = new <Name>(this.page)`).
+     - **Wire the mixin — BY TYPE:** a **page** mixin → into the `WebClient` chain in `edsson-app.ts`
+       (→ `webClient.<page>`); a **component** mixin → into the **page(s) that render it** (each page
+       `extends <Name>Mixin(...)` → `webClient.<page>.<component>`), **never** into `WebClient`.
+     - **Route** (`AppRoute`): a **page** with a known direct route → add it; a **component has no route** → skip.
 7. **`npx tsc --noEmit`** — must pass clean (locator fields + any wiring type-check). Stay read-only on the app.
 8. **Report + hand off.** Then hand to **`/sdk-builder`** for the `@step` methods.
 
