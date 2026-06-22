@@ -1,22 +1,12 @@
 import { Page } from "@playwright/test";
 import { LoginPage } from "@pages/login.page";
 import { UserAccountsPage } from "@pages/user-accounts.page";
-import { HeaderComponent } from "@pages/components/header.component";
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
 
-export function HeaderMixin<TBase extends Constructor<{ page: Page }>>(
-  Base: TBase
-) {
-  return class extends Base {
-    header: HeaderComponent;
-
-    constructor(...args: any[]) {
-      super(...args);
-      this.header = new HeaderComponent(this.page);
-    }
-  };
-}
+// HeaderComponent mixes itself in (see header.component.ts) — re-exported here
+// so WebClient keeps importing all three mixins from this one file.
+export { HeaderMixin } from "@pages/components/header.component";
 
 export function LoginMixin<TBase extends Constructor<{ page: Page }>>(
   Base: TBase

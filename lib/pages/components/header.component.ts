@@ -1,6 +1,22 @@
 import { step } from "@helpers/step";
-import { BasePage } from "@pages/base.page";
+import { BasePage, Page } from "@pages/base.page";
 import { TopNav, SubNav, SubSubNav } from "./nav.types";
+
+export type Constructor<T = {}> = new (...args: any[]) => T;
+
+/** Mixes the header into any page/WebClient — header renders on every authenticated route. */
+export function HeaderMixin<TBase extends Constructor<{ page: Page }>>(
+  Base: TBase,
+) {
+  return class extends Base {
+    header: HeaderComponent;
+
+    constructor(...args: any[]) {
+      super(...args);
+      this.header = new HeaderComponent(this.page);
+    }
+  };
+}
 
 export type Workspace = "Website" | "Employee Portal" | "Employee Portal Beta" | "Customer Portal";
 export type ProfileAction = "My Personal Data" | "Personalization settings" | "Change password";
@@ -50,8 +66,13 @@ export class HeaderComponent extends BasePage {
   }
 
   @step()
-  async isLogoVisible() {
+  async waitForLogo() {
     await this.logo.waitFor({ state: "visible" });
+  }
+
+  @step()
+  async isLogoVisible() {
+    await this.waitForLogo()
     return this.logo.isVisible();
   }
 

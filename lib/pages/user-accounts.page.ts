@@ -1,6 +1,7 @@
 import type { Locator } from "@playwright/test";
 import { step } from "@helpers/step";
 import { BasePage } from "./base.page";
+import { HeaderMixin } from "./components/header.component";
 
 export type UserAccountTab = "Permissions" | "Projects" | "Groups";
 export type CreateFormTab = "Edit User Data" | "Projects" | "Groups";
@@ -45,7 +46,7 @@ export type PermissionName =
   | "Manage Requests" | "Manage All Requests"
   | "Manage Estimation" | "View Estimation" | "Multiple Update Topics";
 
-export class UserAccountsPage extends BasePage {
+export class UserAccountsPage extends HeaderMixin(BasePage) {
   // ════════════════════════════════════════════════════════════════════════
   // SELECTORS — verified against the live DOM (2026-06-18). Where an aria-label
   // is ambiguous (e.g. two "trash" and two "save" buttons exist on the page)

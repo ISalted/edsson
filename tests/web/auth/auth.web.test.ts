@@ -9,7 +9,7 @@ test.describe("Authentication @web @auth @regression @S00000000", () => {
     await webClient.goTo("/login/");
   });
 
-  test(`1. Login: valid credentials redirect to user-accounts @smoke @T00000001`, async ({
+  test.only(`1. Login: valid credentials redirect to user-accounts @smoke @T00000001`, async ({
     webClient,
     apiClient
   }) => {
@@ -20,7 +20,7 @@ test.describe("Authentication @web @auth @regression @S00000000", () => {
     );
 
     expect(response.status()).toBe(200);
-    expect(await webClient.header.isLogoVisible()).toBeTruthy();
+    expect(await webClient.userAccountsPage.header.isLogoVisible()).toBeTruthy();
   });
 
   test(`2. Login: empty email shows validation error @T00000002`, async ({

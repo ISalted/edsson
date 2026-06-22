@@ -32,9 +32,7 @@ export default async function globalSetup() {
     timeout: 90_000,
   });
   await webClient.loginPage.login(env.adminEmail, env.adminPassword);
-  await page.waitForURL("**/administration/user-accounts/**", {
-    timeout: 60_000,
-  });
+  await webClient.userAccountsPage.header.waitForLogo()
 
   const authToken = await page.evaluate(() =>
     localStorage.getItem("lscache-e-LS_AUTH_TOKEN"),
