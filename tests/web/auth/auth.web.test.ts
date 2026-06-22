@@ -9,7 +9,7 @@ test.describe("Authentication @web @auth @regression @S00000000", () => {
     await webClient.goTo("/login/");
   });
 
-  test.only(`1. Login: valid credentials redirect to user-accounts @smoke @T00000001`, async ({
+  test(`1. Login: valid credentials redirect to user-accounts @smoke @T00000001`, async ({
     webClient,
     apiClient
   }) => {
