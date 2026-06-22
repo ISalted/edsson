@@ -4,10 +4,26 @@ on:
   # Manual only — trigger via the "Run workflow" button (or later from Testomatio).
   workflow_dispatch:
     inputs:
+      title:
+        description: "Optional Testomatio run label (e.g. 'client demo'). Empty = default."
+        required: false
+        default: ""
       grep:
         description: "Filter by tag (e.g. @smoke). Empty = run all."
         required: false
         default: ""
+      workers:
+        description: "Parallel workers per shard (this box is 2 vCPU — keep at 1)."
+        required: false
+        type: choice
+        default: "1"
+        options: ["1", "2"]
+      retries:
+        description: "Retries per test (0 = expose raw flakiness)."
+        required: false
+        type: choice
+        default: "1"
+        options: ["0", "1", "2"]
 
 concurrency:
   group: aqa-${{ github.ref_name }}
@@ -44,8 +60,9 @@ jobs:
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_PRIVATE_ARTIFACTS: "1"
-      # One Testomatio run per shard (mirrors the per-area split).
-      TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] ${{ matrix.shard }} #${{ github.run_number }}"
+      # One Testomatio run per shard (mirrors the per-area split). The optional
+      # `title` input is appended as a suffix when provided, else nothing.
+      TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] ${{ matrix.shard }} #${{ github.run_number }}${{ github.event.inputs.title && format(' — {0}', github.event.inputs.title) || '' }}"
       # browsers are pre-baked into the runner image (edsson-runner-pw)
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
     steps:
@@ -69,8 +86,8 @@ jobs:
           npx playwright test ${{ matrix.args }} \
             --project="Parallel Web" \
             --grep "${{ github.event.inputs.grep }}" \
-            --workers=1 \
-            --retries=2
+            --workers=${{ github.event.inputs.workers }} \
+            --retries=${{ github.event.inputs.retries }}
 
       - name: Upload HTML report
         if: ${{ always() }}
