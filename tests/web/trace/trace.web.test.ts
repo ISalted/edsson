@@ -13,7 +13,7 @@ import { env } from "@lib/config";
 // part of the trace. It ALWAYS fails — that's the point; run it on demand for the
 // demo, never leave it in the standard green suite.
 // ─────────────────────────────────────────────────────────────────────────────
-test.describe("Trace demo @web @trace @e2e", () => {
+test.describe("Trace demo @web @trace @e2e @Sc97608f0", () => {
   // No saved session / cookies / cache — the test authenticates itself.
   test.use({ storageState: { cookies: [], origins: [] } });
 
@@ -21,7 +21,7 @@ test.describe("Trace demo @web @trace @e2e", () => {
     await webClient.goTo("/login/");
   });
 
-  test("TRC-001: log in, drive user-accounts, then fail intentionally to showcase the trace @web @trace @e2e", async ({
+  test("TRC-001: log in, drive user-accounts, then fail intentionally to showcase the trace @web @trace @e2e @T057e44e8", async ({
     webClient,
   }) => {
     // ── log in from scratch (captured in the trace) ──
