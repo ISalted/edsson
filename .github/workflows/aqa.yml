@@ -15,21 +15,23 @@ concurrency:
 
 jobs:
   tests:
-    # Area-based sharding: one shard per test area, each pinned to its own
-    # self-hosted runner so the two shards run in parallel.
-    #   auth          -> runner labelled `edsson-1`
-    #   user-accounts -> runner labelled `edsson-2`
-    # fail-fast: false so a failure in one shard does not cancel the other.
+    # Alternative (Playwright's built-in count-based sharding) — можемо і так:
+    #   - shard: "1"
+    #     args: '--shard=1/2'
+    #     runner: edsson-1
+    #   - shard: "2"
+    #     args: '--shard=2/2'
+    #     runner: edsson-2
     name: ${{ matrix.shard }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - shard: auth
-            testPath: tests/web/auth
+            args: tests/web/auth
             runner: edsson-1
-          - shard: user-accounts
-            testPath: tests/web/user-accounts
+          - shard: rest
+            args: 'tests/web --grep-invert "@auth"'
             runner: edsson-2
     runs-on: [self-hosted, "${{ matrix.runner }}"]
     # dev branch -> "dev" environment secrets, prod branch -> "prod" secrets
@@ -64,7 +66,7 @@ jobs:
         # lives in Testomatio. Keeps the GitHub run green when a few of many flake.
         continue-on-error: true
         run: |
-          npx playwright test ${{ matrix.testPath }} \
+          npx playwright test ${{ matrix.args }} \
             --project="Parallel Web" \
             --grep "${{ github.event.inputs.grep }}" \
             --workers=1 \
