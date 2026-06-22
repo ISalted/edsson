@@ -30,7 +30,7 @@ jobs:
           - shard: auth
             args: tests/web/auth
             runner: edsson-1
-          - shard: rest
+          - shard: all (-auth)
             args: 'tests/web --grep-invert "@auth"'
             runner: edsson-2
     runs-on: [self-hosted, "${{ matrix.runner }}"]
