@@ -1,6 +1,8 @@
 ---
 name: run
 description: Launch an Edsson test run on the GitHub self-hosted runner from chat — trigger the aqa.yml workflow (workflow_dispatch) for all tests or a filtered subset (by tag like @smoke, or a test id), and point to where results land. Use when asked to run, launch, execute, kick off, or re-run tests / smoke / a suite on CI.
+model: claude-sonnet-4-6
+effort: low
 ---
 
 # /run — launch a test run on the runner

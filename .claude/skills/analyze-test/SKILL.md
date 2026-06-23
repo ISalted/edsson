@@ -1,6 +1,8 @@
 ---
 name: analyze-test
 description: Explain AND critically assess an existing Edsson AQA test (or a whole file/area) like a senior AQA — what it verifies, how it's written, whether its assertions actually prove the behaviour, its real-run reliability/flakiness, code smells, and coverage gaps. Returns a verdict plus prioritized fixes. Use when asked to analyze, explain, review, audit, understand, or onboard someone to a test. Read-only — never modifies code.
+model: claude-sonnet-4-6
+effort: medium
 ---
 
 # Analyze a test

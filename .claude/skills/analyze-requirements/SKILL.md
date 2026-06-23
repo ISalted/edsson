@@ -1,6 +1,8 @@
 ---
 name: analyze-requirements
 description: Turn business requirements — a stated spec (pasted Jira ticket, doc/text file, prose) OR a missing/weak one you must DERIVE from the live app + domain — into a clean, atomic, TESTABLE, ID'd requirements artifact that /test-design consumes. Read the source critically, extract explicit AND implicit/non-functional requirements, audit each against the ISO/IEC/IEEE 29148 quality characteristics (keystone: Verifiable — acceptance criteria mandatory), resolve every ambiguity by asking or flagging an assumption (never silently invent), and write test-design/<area>/REQUIREMENTS.md with REQ-IDs + acceptance criteria + traceability. Use when asked to analyze/clarify/refine/intake requirements, a ticket, a spec, or acceptance criteria — including when there is no spec and you must recover requirements from the app. The step BEFORE /test-design — produces REQUIREMENTS ONLY, no test cases, no automation.
+model: claude-opus-4-8
+effort: high
 ---
 
 # Analyze requirements (requirements intake)

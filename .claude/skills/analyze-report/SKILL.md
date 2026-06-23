@@ -1,6 +1,8 @@
 ---
 name: analyze-report
 description: Triage an Edsson CI test-run report like a senior reliability operator — pick the run (latest or by date), cluster failures by root cause, classify each (product defect | test-code bug | flaky | infra/env | data), separate new regressions from known, weight by severity, judge flakiness from cross-run history, and deliver a layered verdict + routed next actions. Use when asked what the last run did, what failed and why, whether a run is a ship-blocker, to triage/diagnose a run, or whether failures are real vs noise. Read-only — never edits, runs, or merges.
+model: claude-opus-4-8
+effort: medium
 ---
 
 # Triage a test run

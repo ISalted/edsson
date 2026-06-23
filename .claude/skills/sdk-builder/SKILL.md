@@ -1,6 +1,8 @@
 ---
 name: sdk-builder
 description: Build or extend the AQA SDK / framework layer — the METHOD layer. Add intent-named @step act-and-return methods onto the private locators /analyze-page already wrote on a page or component object, plus reusable helpers, fixtures, api-client methods, and data factories. Data-agnostic, assertions-in-test, typed unions, real waits. WRITES NO LOCATORS (route to /analyze-page if a locator or object is missing) and NO tests (that's /test-write). Use when asked to add methods/flows to a page or component object, or to add a reusable helper / fixture / api method / data factory. The METHOD step between /analyze-page and /test-write.
+model: claude-sonnet-4-6
+effort: medium
 ---
 
 # /sdk-builder — the METHOD layer

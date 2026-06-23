@@ -1,6 +1,8 @@
 ---
 name: open-pr
 description: Package an EXISTING working-tree change-set into a reviewable Pull Request to `dev` for the Edsson AQA suite — branch off `dev` as `aqa/<short-desc>`, commit with a conventional message, push, and open a PR per the team's MR standards (title, body, CI-run link), then stop at the review gate. The general git / merge-request action layer. Use when asked to open/raise/create a PR or MR, land/ship/submit changes, branch + commit + push existing work, or get a change reviewed. Does NOT author tests (/test-write), SDK/locators (/sdk-builder, /analyze-page), or trigger CI (/run).
+model: claude-sonnet-4-6
+effort: low
 ---
 
 # Open a PR (the git / merge-request action layer)

@@ -1,6 +1,8 @@
 ---
 name: test-design
 description: Design a prioritized, deduplicated test-case CHECKLIST for a feature, page, or requirement BEFORE any automation — systematically applies the full test-design technique grid (equivalence partitioning, boundary values, decision tables, state transition, pairwise, plus security, accessibility, persistence, i18n) and outputs a checklist of concrete, ID'd cases in the project's format. Use when asked to create test cases, a checklist, test scenarios, coverage, or to "break down" / decompose a feature or requirement into cases. This is the step AFTER /analyze-requirements (it consumes the `test-design/<area>/REQUIREMENTS.md` artifact) and BEFORE /test-write.
+model: claude-opus-4-8
+effort: high
 ---
 
 # Design a test-case checklist

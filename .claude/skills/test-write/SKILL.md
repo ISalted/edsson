@@ -1,6 +1,8 @@
 ---
 name: test-write
 description: Author a new Playwright automated test for the Edsson AQA suite from a /test-design checklist item or a described scenario — write a THIN test that CONSUMES the SDK in lib/ via the webClient fixture, give it a MEANINGFUL oracle, verify it passes on CI, and open a PR for QA-lead review. Use whenever asked to write, add, create, or automate a test / cover a scenario / turn a checklist case into a test. This is the FINALE: /test-design → /analyze-page → /sdk-builder → /test-write.
+model: claude-sonnet-4-6
+effort: low
 ---
 
 # /test-write — write the test, prove it, open the PR

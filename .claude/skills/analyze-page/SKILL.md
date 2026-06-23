@@ -1,6 +1,8 @@
 ---
 name: analyze-page
 description: Analyze a live Edsson page via the Playwright MCP and WRITE its verified LOCATOR layer into lib/pages/<page>.page.ts — derive robust locators from reality, confirm each matches exactly one element, then commit them as private fields + factories (scaffolding class + mixin + WebClient + AppRoute when the object is new). Writes LOCATORS ONLY — no @step methods (that's /sdk-builder), no tests (that's /test-write). Use when asked to analyze/map/read a page, capture or build selectors, or stand up a Page Object's locators before building methods.
+model: claude-sonnet-4-6
+effort: medium
 ---
 
 # Analyze a live page → write its LOCATOR layer
