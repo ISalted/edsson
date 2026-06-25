@@ -41,11 +41,31 @@ From the nature of the change, not the file count:
 - The QA lead deletes the branch after merge — not you.
 
 ### 4. Commit
+**Hard gate — confirm before committing, every time.** A commit writes to history; do **not**
+run `git commit` until the user has explicitly approved it. Show the user the conventional
+message, the exact files to be staged, and a 1-line diff summary, then wait for an explicit
+go-ahead. As with push (step 5), a broad "do it all end-to-end" / "one branch, one PR to dev"
+instruction merely *describes the deliverable* — it is **not** consent to commit. Only proceed
+without this pause when the user's message is a **direct, dedicated** ask to commit/land the
+change right now (e.g. they invoke `/open-pr` itself, or say "commit it" / "yes, commit" in
+response to your summary). If unsure, pause and ask — never infer consent from a multi-skill request.
+
 - Conventional message: `type: subject` — imperative, lowercase.
 - For a test, **fold in the `<FOC>` id**: `test: UAC-041 locked user cannot log in`.
 - Stage only the scoped files (`git add <paths>`) — never blind `git add -A` that sweeps in unrelated working-tree noise.
 
 ### 5. Push + open the PR to `dev`
+**Hard gate — confirm before this step, every time.** Pushing a branch and opening a PR are
+visible to the team and not casually reversible (CLAUDE.md Interaction model: side-effecting
+actions always confirm first). Show the user the branch name, the commit message(s), and a
+1-line diff summary, then wait for an explicit go-ahead before pushing.
+A broader instruction that merely *describes the deliverable* (e.g. "one branch, one PR to
+dev" as part of a longer build-everything request) is **not** itself permission to push —
+it states the target shape, not a green light to act now. Only proceed without this pause
+when the user's message is a **direct, dedicated** ask to open/land the PR right now (e.g.
+they invoke `/open-pr` itself, or say "open it" / "yes, push it" in response to your summary).
+If unsure which it is, pause and ask — never infer consent from a multi-skill request.
+
 Pick the mechanic that fits the environment (per git-ci-guide):
 - **Native** (local repo): `git push -u origin aqa/<short-desc>` → `gh pr create --base dev --title "<conventional subject>" --body "<body>"`.
 - **github MCP** (no local repo / Desktop): `create_branch` → `push_files` / `create_or_update_file` → `create_pull_request` (`base: dev`).
@@ -75,6 +95,9 @@ _for QA-lead review — do not merge_
 Return the **PR URL** + a 2-line summary (branch, type, what it lands, what the reviewer should check). **Stop here** — the PR is the review gate.
 
 ## Guardrails (hard)
+- **Never commit, push, or open the PR as an inferred step of a larger multi-skill request.**
+  Confirm explicitly first — commit gate in step 4, push/PR gate in step 5. A "do it all
+  end-to-end, one PR to dev" instruction describes the deliverable, not consent to commit or push.
 - **Branch + PR ONLY.** Never push to `dev`/`prod` directly, never merge, never force-push, never auto-close or self-merge the PR. Merging and branch deletion are the QA lead's.
 - **One scoped change-set per PR** — don't bundle unrelated changes.
 - Inherit project guardrails (`CLAUDE.md`): never type the admin password, never delete accounts, never bypass the review gate.
