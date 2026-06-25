@@ -36,7 +36,6 @@ test.describe("Trace demo @web @trace @e2e @Sc97608f0", () => {
     await webClient.waitForTimeout(1);               // 1s — let the filmstrip breathe
     await uap.clickRefresh();                         // toolbar action
     const pager = await uap.getPagerInfo();          // read some state
-
     // ── deliberate, artificial failure (the demo moment) ──
     // Everything above is in the trace; this line makes Playwright save it.
     expect(
