@@ -12,6 +12,8 @@ export class LoginPage extends BasePage {
   private readonly submitButton = this.page.getByRole("button", {
     name: "Sign in",
   });
+  // <h1>Sign in</h1> — verified live (role=heading, level 1) 2026-06-25.
+  private readonly heading = this.page.getByRole("heading", { name: "Sign in" });
   private readonly errorMessage = this.page.locator('[class*="login_banner"]');
 
   @step()
@@ -46,6 +48,41 @@ export class LoginPage extends BasePage {
   async isErrorVisible() {
     await this.errorMessage.waitFor({ state: "visible" });
     return this.errorMessage.isVisible();
+  }
+
+  // Snapshot of the login form's readiness in one read — the test asserts the
+  // heading, both inputs, and an enabled Sign in button are all present (AUT-001).
+  @step()
+  async getLoginFormState(): Promise<{
+    heading: boolean;
+    email: boolean;
+    password: boolean;
+    submitVisible: boolean;
+    submitEnabled: boolean;
+  }> {
+    await this.heading.waitFor({ state: "visible" });
+    return {
+      heading: await this.heading.isVisible(),
+      email: await this.emailInput.isVisible(),
+      password: await this.passwordInput.isVisible(),
+      submitVisible: await this.submitButton.isVisible(),
+      submitEnabled: await this.submitButton.isEnabled(),
+    };
+  }
+
+  // Non-waiting presence check — returns false immediately when no banner is in
+  // the DOM, so a test can assert the banner is absent (initial load AUT-003,
+  // and that it clears on re-edit AUT-033) without hanging on waitFor.
+  @step()
+  async isErrorBannerPresent(): Promise<boolean> {
+    return (await this.errorMessage.count()) > 0;
+  }
+
+  // Two rapid clicks on Sign in — pair with helpers.countNetworkRequests to
+  // prove the form de-dupes to a single POST /account/login (AUT-032).
+  @step()
+  async doubleClickSubmit(): Promise<void> {
+    await this.submitButton.click({ clickCount: 2, delay: 50 });
   }
 
   @step()

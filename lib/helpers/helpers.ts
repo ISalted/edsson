@@ -1,4 +1,4 @@
-import type { Page, Request } from "@playwright/test";
+import type { Dialog, Page, Request } from "@playwright/test";
 import { step } from "@helpers/step";
 
 /**
@@ -84,5 +84,31 @@ export class Helpers {
       page.off("request", listener);
     }
     return count;
+  }
+
+  /**
+   * Run `action` while watching for a native JS dialog (alert/confirm/prompt)
+   * and return whether one fired. Used to prove an injected XSS payload is
+   * rendered as literal text rather than executed (AUT-020). Any dialog is
+   * accepted-and-dismissed so the page is never left blocked.
+   */
+  @step()
+  async didDialogAppearDuring(
+    page: Page,
+    action: () => Promise<void>,
+  ): Promise<boolean> {
+    let appeared = false;
+    const listener = async (dialog: Dialog) => {
+      appeared = true;
+      await dialog.dismiss().catch(() => {});
+    };
+    page.on("dialog", listener);
+    try {
+      await action();
+      await page.waitForTimeout(500);
+    } finally {
+      page.off("dialog", listener);
+    }
+    return appeared;
   }
 }

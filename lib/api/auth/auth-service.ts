@@ -30,6 +30,22 @@ export default class AuthService {
     });
   }
 
+  // Post an arbitrary body to /account/login — lets a test send malformed JSON
+  // or a payload missing the Email/Password fields and assert the API answers
+  // 4xx, never 500 (AUT-027). Caller controls the exact body.
+  async loginRaw(data: unknown) {
+    return this.request.post(`${this.baseUrl}/account/login`, {
+      headers: { "Content-Type": "application/json" },
+      data: data as any,
+    });
+  }
+
+  // Call getPersonalData with NO Authorization header — asserts the endpoint
+  // refuses anonymous access with 401 (AUT-026).
+  async getPersonalDataWithoutAuth() {
+    return this.request.get(`${this.baseUrl}/account/getPersonalData`);
+  }
+
   async getPersonalData(token: string) {
     return this.request.get(`${this.baseUrl}/account/getPersonalData`, {
       headers: { Authorization: `Bearer ${token}` },
