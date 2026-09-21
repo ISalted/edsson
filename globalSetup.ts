@@ -21,6 +21,7 @@ export default async function globalSetup() {
     baseURL: env.baseUrl,
     viewport: { width: 1700, height: 1025 },
   });
+  context.setDefaultTimeout(20_000);
   const page = await context.newPage();
   const webClient = new WebClient(page);
 
@@ -31,7 +32,15 @@ export default async function globalSetup() {
     waitUntil: "domcontentloaded",
     timeout: 90_000,
   });
-  await webClient.loginPage.login(env.adminEmail, env.adminPassword);
+  try {
+    await webClient.loginPage.login(env.adminEmail, env.adminPassword);
+  } catch (e) {
+    fs.mkdirSync("login-debug", { recursive: true });
+    await page.screenshot({ path: "login-debug/login-failure.png", fullPage: true });
+    console.log(`login failed at ${page.url()} | title: ${await page.title()}`);
+    await browser.close();
+    throw e;
+  }
   await webClient.userAccountsPage.header.waitForLogo()
 
   const authToken = await page.evaluate(() =>

@@ -75,6 +75,15 @@ jobs:
             --workers=${{ github.event.inputs.workers }} \
             --retries=${{ github.event.inputs.retries }}
 
+      - name: Upload login debug
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: login-debug
+          path: login-debug/
+          if-no-files-found: ignore
+          retention-days: 3
+
       - name: Upload HTML report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
