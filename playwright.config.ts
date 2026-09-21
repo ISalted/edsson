@@ -33,7 +33,12 @@ export default defineConfig({
     ...devices["Desktop Chrome"],
     viewport: { width: 1700, height: 1025 },
     launchOptions: {
-      args: ["--disable-blink-features=AutomationControlled"],
+      args: [
+        "--disable-blink-features=AutomationControlled",
+        "--disable-background-timer-throttling",
+        "--disable-backgrounding-occluded-windows",
+        "--disable-renderer-backgrounding",
+      ],
     },
   },
   projects: [
