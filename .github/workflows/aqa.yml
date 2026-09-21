@@ -31,25 +31,8 @@ concurrency:
 
 jobs:
   tests:
-    # Alternative (Playwright's built-in count-based sharding) — можемо і так:
-    #   - shard: "1"
-    #     args: '--shard=1/2'
-    #     runner: edsson-1
-    #   - shard: "2"
-    #     args: '--shard=2/2'
-    #     runner: edsson-2
-    name: ${{ matrix.shard }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - shard: auth
-            args: tests/web/auth
-            runner: edsson-1
-          - shard: all (-auth)
-            args: 'tests/web --grep-invert "@auth"'
-            runner: edsson-2
-    runs-on: [self-hosted, "${{ matrix.runner }}"]
+    name: Run all tests
+    runs-on: [self-hosted]
     # dev branch -> "dev" environment secrets, prod branch -> "prod" secrets
     environment: ${{ github.ref_name == 'prod' && 'prod' || 'dev' }}
     env:
@@ -60,10 +43,8 @@ jobs:
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_PRIVATE_ARTIFACTS: "1"
-      # One Testomatio run per shard (mirrors the per-area split). The optional
-      # `title` input is appended as a suffix when provided, else nothing.
-      TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] ${{ matrix.shard }} #${{ github.run_number }}${{ github.event.inputs.title && format(' — {0}', github.event.inputs.title) || '' }}"
-      # browsers are pre-baked into the runner image (edsson-runner-pw)
+      TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] #${{ github.run_number }}${{ github.event.inputs.title && format(' — {0}', github.event.inputs.title) || '' }}"
+      # browsers are pre-baked into the runner image
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
     steps:
       - uses: actions/checkout@v4
@@ -76,14 +57,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # No "Install Chrome" step — browsers are pre-baked into the runner image.
-
-      - name: Run ${{ matrix.shard }} shard
+      - name: Run all tests
         # Don't fail the whole run on individual test failures — real pass/fail
         # lives in Testomatio. Keeps the GitHub run green when a few of many flake.
         continue-on-error: true
         run: |
-          npx playwright test ${{ matrix.args }} \
+          npx playwright test tests/web \
             --project="Parallel Web" \
             --grep "${{ github.event.inputs.grep }}" \
             --workers=${{ github.event.inputs.workers }} \
@@ -93,7 +72,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-html-report-${{ matrix.shard }}
+          name: playwright-html-report
           path: playwright-report/
           retention-days: 14
 
@@ -101,6 +80,6 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-json-report-${{ matrix.shard }}
+          name: playwright-json-report
           path: results.json
           retention-days: 14
