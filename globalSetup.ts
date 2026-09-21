@@ -24,6 +24,10 @@ export default async function globalSetup() {
   context.setDefaultTimeout(20_000);
   const page = await context.newPage();
   const webClient = new WebClient(page);
+  page.on("console", (m) => m.type() === "error" && console.log(`[browser console] ${m.text()}`));
+  page.on("pageerror", (e) => console.log(`[browser pageerror] ${e.message}`));
+  page.on("requestfailed", (r) => console.log(`[request failed] ${r.url()} ${r.failure()?.errorText}`));
+  page.on("response", (r) => r.status() >= 400 && console.log(`[http ${r.status()}] ${r.url()}`));
 
   // Cold-start safe: the dev Azure app may be asleep (20-40s to wake on first
   // hit). Wait for the DOM (not the full "load" event) and allow up to 90s so

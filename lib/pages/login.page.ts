@@ -36,10 +36,15 @@ export class LoginPage extends BasePage {
         res.url().includes("/api/account/login") &&
         res.request().method() === "POST",
     );
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.submit();
-    return responsePromise;
+    const [response] = await Promise.all([
+      responsePromise,
+      (async () => {
+        await this.fillEmail(email);
+        await this.fillPassword(password);
+        await this.submit();
+      })(),
+    ]);
+    return response;
   }
 
   @step()
