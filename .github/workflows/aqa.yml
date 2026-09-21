@@ -47,34 +47,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Check env (lengths only)
-        run: |
-          for v in BASE_URL API_URL ADMIN_EMAIL ADMIN_PASSWORD; do
-            val="${!v}"
-            ws="no"; [[ "$val" =~ [[:space:]] ]] && ws="YES"
-            echo "$v: length=${#val} whitespace=$ws"
-          done
-
-      - name: Runner env names
-        run: env | cut -d= -f1 | sort | tr '\n' ' '
-
+      # Tests run in the official Playwright image (bundled Chromium): the native
+      # Chrome on this Mac runner hangs on the login page's reCAPTCHA.
       - name: Run all tests
         # Don't fail the whole run on individual test failures — real pass/fail
         # lives in Testomatio. Keeps the GitHub run green when a few of many flake.
         continue-on-error: true
+        env:
+          GREP: ${{ github.event.inputs.grep }}
+          WORKERS: ${{ github.event.inputs.workers }}
+          RETRIES: ${{ github.event.inputs.retries }}
         run: |
-          npx playwright test tests/web \
-            --project="Parallel Web" \
-            --grep "${{ github.event.inputs.grep }}" \
-            --workers=${{ github.event.inputs.workers }} \
-            --retries=${{ github.event.inputs.retries }}
+          docker run --rm --ipc=host \
+            -e BASE_URL -e API_URL -e ADMIN_EMAIL -e ADMIN_PASSWORD \
+            -e TESTOMATIO -e TESTOMATIO_PRIVATE_ARTIFACTS -e TESTOMATIO_TITLE \
+            -e GREP -e WORKERS -e RETRIES \
+            -e CI=true -e PW_BUNDLED_CHROMIUM=1 \
+            -v "$PWD":/work -w /work \
+            -v edsson_node_modules:/work/node_modules \
+            mcr.microsoft.com/playwright:v1.61.0-noble \
+            bash -c 'npm ci && npx playwright test tests/web --project="Parallel Web" --grep "$GREP" --workers="$WORKERS" --retries="$RETRIES"'
 
       - name: Upload login debug
         if: ${{ always() }}

@@ -29,16 +29,11 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     actionTimeout: 30 * 1000,
-    channel: "chrome",
+    channel: process.env.PW_BUNDLED_CHROMIUM ? undefined : "chrome",
     ...devices["Desktop Chrome"],
     viewport: { width: 1700, height: 1025 },
     launchOptions: {
-      args: [
-        "--disable-blink-features=AutomationControlled",
-        "--disable-background-timer-throttling",
-        "--disable-backgrounding-occluded-windows",
-        "--disable-renderer-backgrounding",
-      ],
+      args: ["--disable-blink-features=AutomationControlled"],
     },
   },
   projects: [
