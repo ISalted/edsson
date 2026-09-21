@@ -44,8 +44,6 @@ jobs:
       TESTOMATIO: ${{ secrets.TESTOMATIO }}
       TESTOMATIO_PRIVATE_ARTIFACTS: "1"
       TESTOMATIO_TITLE: "Edsson AQA [${{ github.ref_name }}] #${{ github.run_number }}${{ github.event.inputs.title && format(' — {0}', github.event.inputs.title) || '' }}"
-      # browsers are pre-baked into the runner image
-      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
     steps:
       - uses: actions/checkout@v4
 
@@ -63,6 +61,9 @@ jobs:
             ws="no"; [[ "$val" =~ [[:space:]] ]] && ws="YES"
             echo "$v: length=${#val} whitespace=$ws"
           done
+
+      - name: Runner env names
+        run: env | cut -d= -f1 | sort | tr '\n' ' '
 
       - name: Run all tests
         # Don't fail the whole run on individual test failures — real pass/fail

@@ -27,6 +27,7 @@ export default async function globalSetup() {
   page.on("console", (m) => m.type() === "error" && console.log(`[browser console] ${m.text()}`));
   page.on("pageerror", (e) => console.log(`[browser pageerror] ${e.message}`));
   page.on("requestfailed", (r) => console.log(`[request failed] ${r.url()} ${r.failure()?.errorText}`));
+  page.on("request", (r) => /recaptcha|gstatic/.test(r.url()) && console.log(`[recaptcha req] ${r.url().slice(0, 100)}`));
   page.on("response", (r) => r.status() >= 400 && console.log(`[http ${r.status()}] ${r.url()}`));
 
   // Cold-start safe: the dev Azure app may be asleep (20-40s to wake on first
@@ -41,6 +42,12 @@ export default async function globalSetup() {
   } catch (e) {
     fs.mkdirSync("login-debug", { recursive: true });
     await page.screenshot({ path: "login-debug/login-failure.png", fullPage: true });
+    const info = await page
+      .evaluate(
+        "({webdriver: navigator.webdriver, ua: navigator.userAgent, grecaptcha: typeof window.grecaptcha, btnDisabled: [...document.querySelectorAll('button')].map(b => b.textContent + ':' + b.disabled)})",
+      )
+      .catch((err) => String(err));
+    console.log(`login diag ${JSON.stringify(info)}`);
     console.log(`login failed at ${page.url()} | title: ${await page.title()}`);
     await browser.close();
     throw e;
