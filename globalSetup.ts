@@ -14,7 +14,7 @@ const SESSION_FILE = "session-storage.json";
  */
 export default async function globalSetup() {
   const browser = await chromium.launch({
-    channel: "chrome",
+    channel: process.env.PW_BUNDLED_CHROMIUM ? undefined : "chrome",
     args: ["--disable-blink-features=AutomationControlled"],
   });
   const context = await browser.newContext({

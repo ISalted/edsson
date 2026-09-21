@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test:web": "playwright test --project='Parallel Web'",
+    "test:docker": "docker run --rm -it --ipc=host --env-file .env -e PW_BUNDLED_CHROMIUM=1 -v \"$PWD\":/work -w /work -v edsson_node_modules:/work/node_modules mcr.microsoft.com/playwright:v1.61.0-noble bash -c 'npm ci && npx playwright test --project=\"Parallel Web\" \"$@\"' _",
     "test": "playwright test",
     "headed": "playwright test --headed",
     "ui": "playwright test --ui",
