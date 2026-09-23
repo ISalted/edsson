@@ -14,6 +14,12 @@ export class BasePage {
     await this.page.waitForURL(pattern);
   }
 
+  // Current URL path (e.g. "/login/") — for redirect/stay-on-page assertions.
+  @step()
+  async getCurrentPath(): Promise<string> {
+    return new URL(this.page.url()).pathname;
+  }
+
   @step()
   async waitForTimeout(seconds: number) {
     await this.page.waitForTimeout(seconds * 1000);
