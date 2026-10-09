@@ -7,9 +7,12 @@ This file is the **short always-on layer**; the deep detail lives in `.claude/do
 skills pull it in — don't duplicate it here.
 
 ## Setup (once)
-- `cp .mcp.json.example .mcp.json` — 3 MCP servers: `github`, `playwright`, `testomatio-edsson`.
+- `playwright` MCP is committed in `.mcp.json` (no secrets) → `scripts/playwright-mcp.mjs` (headed locally;
+  headless pre-installed Chromium in Claude Code on the web — target hosts must be in the env's allowed domains).
+- `github` + `testomatio-edsson` hold tokens → add them **local scope** with `claude mcp add -s local …`
+  (values from `.mcp.json.example`), never into the committed `.mcp.json`.
 - `cp .env.example .env` — `BASE_URL`, `API_URL`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` (loaded via `dotenv`).
-- `.mcp.json`, `.env`, `session-storage.json`, `sessions.json` are gitignored (hold tokens/secrets).
+- `.env`, `session-storage.json`, `sessions.json` are gitignored (hold tokens/secrets).
 
 ## Canon docs (`.claude/docs/`) — the deep layer the skills pull in
 - `code-style-guide.md` — POM / SOLID / fixtures / **page-vs-component object** rule.

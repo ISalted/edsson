@@ -7,7 +7,6 @@ session-storage.json
 .env
 .env.*
 !.env.example
-# .mcp.json holds the Testomatio token — keep it local; share .mcp.json.example
-.mcp.json
-!.mcp.json.example
+# .mcp.json is committed (playwright only, no secrets). Token-bearing servers
+# (github, testomatio) go in local scope via `claude mcp add -s local` — see .mcp.json.example
 .DS_Store
