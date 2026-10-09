@@ -1,18 +1,21 @@
 import { BasePage, Page } from "@pages/base.page";
-import { LoginMixin, UserAccountsMixin } from "@pages/mixins";
+import { LoginMixin, UserAccountsMixin, UserRolesMixin } from "@pages/mixins";
 import { step } from "@helpers/step";
 
 /** Known application routes (relative to the configured baseURL). */
 export type AppRoute =
   | "/"
   | "/login/"
-  | "/administration/user-accounts/";
+  | "/administration/user-accounts/"
+  | "/administration/user-roles/";
 
-// WebClient composes PAGES only (.loginPage, .userAccountsPage). Components
-// (header, …) mix into the pages that render them — never here. Use
+// WebClient composes PAGES only (.loginPage, .userAccountsPage, .userRolesPage).
+// Components (header, …) mix into the pages that render them — never here. Use
 // webClient.<page>.header, never webClient.header.
-export default class WebClient extends UserAccountsMixin(
-  LoginMixin(BasePage),
+export default class WebClient extends UserRolesMixin(
+  UserAccountsMixin(
+    LoginMixin(BasePage),
+  ),
 ) {
   constructor(page: Page) {
     super(page);

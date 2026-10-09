@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 import { LoginPage } from "@pages/login.page";
 import { UserAccountsPage } from "@pages/user-accounts.page";
+import { UserRolesPage } from "@pages/user-roles.page";
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
 
@@ -30,6 +31,19 @@ export function UserAccountsMixin<TBase extends Constructor<{ page: Page }>>(
     constructor(...args: any[]) {
       super(...args);
       this.userAccountsPage = new UserAccountsPage(this.page);
+    }
+  };
+}
+
+export function UserRolesMixin<TBase extends Constructor<{ page: Page }>>(
+  Base: TBase
+) {
+  return class extends Base {
+    userRolesPage: UserRolesPage;
+
+    constructor(...args: any[]) {
+      super(...args);
+      this.userRolesPage = new UserRolesPage(this.page);
     }
   };
 }
